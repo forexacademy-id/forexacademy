@@ -1,131 +1,51 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Forex Academy - Prop Firm Indonesia</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* small custom */
-    .accent{background:linear-gradient(90deg,#7c3aed,#06b6d4)}
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Registrasi</title>
 </head>
-<body class="bg-gradient-to-b from-slate-900 to-slate-800 text-slate-100">
-  <header class="max-w-6xl mx-auto p-6 flex items-center justify-between">
-    <div class="flex items-center gap-4">
-      <div class="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-white" style="background:linear-gradient(135deg,#7c3aed,#06b6d4)">FA</div>
-      <div>
-        <div class="text-lg font-bold">Forex Academy</div>
-        <div class="text-sm text-slate-300">Prop Firm Indonesia</div>
-      </div>
-    </div>
-    <nav class="hidden md:flex gap-6 text-sm items-center">
-      <a href="#packages" class="hover:underline">Paket</a>
-      <a href="#rules" class="hover:underline">Aturan</a>
-      <a href="#benefit" class="hover:underline">Keuntungan</a>
-      <a href="#payment" class="hover:underline">Pembayaran</a>
-      <a href="confirm.html" class="px-4 py-2 bg-white text-slate-900 rounded-md">Hubungi</a>
-    </nav>
-  </header>
+<body>
+  <h1>Form Registrasi</h1>
+  <form action="confirm.html" method="get">
+    <label>Nama Lengkap:</label><br>
+    <input type="text" name="nama" required><br><br>
 
-  <main class="max-w-6xl mx-auto p-6">
-    <!-- Hero -->
-    <section class="grid md:grid-cols-2 gap-8 items-center">
-      <div>
-        <h1 class="text-4xl font-extrabold">Buktikan Skill Tradingmu & Dapatkan Akun Real Hingga $3000</h1>
-        <p class="mt-4 text-slate-300">Ikuti challenge, capai target, dan dapatkan pembagian keuntungan <span class="font-bold">90% untuk trader</span> &amp; <span class="font-bold">10% untuk kami</span>.</p>
-        <div class="mt-6 flex gap-3">
-          <button onclick="document.getElementById('packages').scrollIntoView({behavior:'smooth'})" class="px-5 py-3 rounded-md accent text-slate-900 font-semibold shadow-lg">Mulai Challenge</button>
-          <a href="#rules" class="px-5 py-3 rounded-md border border-slate-600 text-slate-200">Lihat Aturan</a>
-        </div>
+    <label>NIK (No KTP):</label><br>
+    <input type="text" name="nik" required><br><br>
 
-        <div id="benefit" class="mt-8 grid sm:grid-cols-2 gap-4">
-          <div class="bg-slate-900/40 p-4 rounded-md">
-            <div class="text-sm text-slate-300">Keuntungan</div>
-            <div class="font-semibold mt-1">90% Profit untuk Trader</div>
-          </div>
-          <div class="bg-slate-900/40 p-4 rounded-md">
-            <div class="text-sm text-slate-300">Support</div>
-            <div class="font-semibold mt-1">Konfirmasi cepat via WhatsApp</div>
-          </div>
-        </div>
-      </div>
+    <label>No. WhatsApp:</label><br>
+    <input type="text" name="wa" required><br><br>
 
-      <div class="bg-slate-900/40 p-6 rounded-xl shadow-xl">
-        <div class="text-slate-200 font-semibold">Pilih Paket Challenge</div>
-        <div id="packages" class="mt-4 grid gap-4">
-          <div class="flex items-center justify-between bg-slate-800 p-4 rounded-md">
-            <div>
-              <div class="font-bold">$10</div>
-              <div class="text-sm text-slate-400">Akun $1,000</div>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="text-sm text-slate-300">Rp160.000</div>
-              <button onclick="goToPay('p10')" class="px-4 py-2 bg-indigo-600 rounded-md font-semibold">Pilih</button>
-            </div>
-          </div>
+    <label>No. Rekening:</label><br>
+    <input type="text" name="norek" required><br><br>
 
-          <div class="flex items-center justify-between bg-slate-800 p-4 rounded-md">
-            <div>
-              <div class="font-bold">$20</div>
-              <div class="text-sm text-slate-400">Akun $2,000</div>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="text-sm text-slate-300">Rp320.000</div>
-              <button onclick="goToPay('p20')" class="px-4 py-2 bg-indigo-600 rounded-md font-semibold">Pilih</button>
-            </div>
-          </div>
+    <button type="submit">Lanjut</button>
+  </form>
+</body>
+</html><!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Registrasi</title>
+</head>
+<body>
+  <h1>Form Registrasi</h1>
+  <form action="confirm.html" method="get">
+    <label>Nama Lengkap:</label><br>
+    <input type="text" name="nama" required><br><br>
 
-          <div class="flex items-center justify-between bg-slate-800 p-4 rounded-md">
-            <div>
-              <div class="font-bold">$30</div>
-              <div class="text-sm text-slate-400">Akun $3,000</div>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="text-sm text-slate-300">Rp480.000</div>
-              <button onclick="goToPay('p30')" class="px-4 py-2 bg-indigo-600 rounded-md font-semibold">Pilih</button>
-            </div>
-          </div>
-        </div>
+    <label>NIK (No KTP):</label><br>
+    <input type="text" name="nik" required><br><br>
 
-        <div id="rules" class="mt-6">
-          <h3 class="text-lg font-bold">Aturan Challenge</h3>
-          <ul class="mt-2 text-slate-300 list-disc ml-5">
-            <li>Drawdown harian maksimum: <strong>5%</strong></li>
-            <li>Drawdown bulanan maksimum: <strong>10%</strong></li>
-            <li>Target profit untuk lolos: <strong>5–10%</strong></li>
-            <li>Profit split: <strong>90% Trader / 10% PropFirm</strong></li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <label>No. WhatsApp:</label><br>
+    <input type="text" name="wa" required><br><br>
 
-    <!-- Payment preview / CTA -->
-    <section id="payment" class="mt-12 bg-slate-900/30 p-6 rounded-xl">
-      <div class="flex items-center justify-between">
-        <div>
-          <div class="text-slate-300">Siap mulai? Pilih paket dan ikuti langkah pembayaran.</div>
-          <div class="mt-3 flex gap-3">
-            <a href="pay-10.html" class="px-4 py-2 bg-indigo-600 rounded-md font-semibold">Bayar Rp160.000 (Akun $1,000)</a>
-            <a href="pay-20.html" class="px-4 py-2 bg-indigo-600 rounded-md font-semibold">Bayar Rp320.000 (Akun $2,000)</a>
-            <a href="pay-30.html" class="px-4 py-2 bg-indigo-600 rounded-md font-semibold">Bayar Rp480.000 (Akun $3,000)</a>
-          </div>
-        </div>
-        <div class="hidden md:block text-slate-400">Atau hubungi admin: <strong>0895-2030-8062</strong></div>
-      </div>
-    </section>
+    <label>No. Rekening:</label><br>
+    <input type="text" name="norek" required><br><br>
 
-    <section class="mt-10 text-center text-slate-400">
-      <p><strong>Catatan:</strong> Trading mengandung risiko. Pastikan memahami risiko sebelum memulai.</p>
-    </section>
-  </main>
-
-  <footer class="max-w-6xl mx-auto p-6 text-sm text-slate-400 text-center">
-    © 2025 Forex Academy - Prop Firm Indonesia
-  </footer>
-
-  <script>
-    {common_js}
-  </script>
+    <button type="submit">Lanjut</button>
+  </form>
 </body>
 </html>
