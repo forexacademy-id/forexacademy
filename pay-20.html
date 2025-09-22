@@ -1,21 +1,62 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pembayaran Paket Rp20</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Bayar $20 → Akun $2,000 - Forex Academy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h1>Pembayaran Paket Rp20</h1>
-  <p>Silakan scan QR code berikut untuk melakukan pembayaran.</p>
+<body class="bg-gradient-to-b from-slate-900 to-slate-800 text-slate-100">
+  <div class="max-w-4xl mx-auto p-6">
+    <a href="index.html" class="text-sm text-slate-300 underline">← Kembali</a>
+    <div class="bg-slate-900/40 mt-4 p-6 rounded-xl shadow-xl">
+      <h1 class="text-2xl font-bold">Bayar Paket $20 → Akun $2,000</h1>
+      <p class="mt-2 text-slate-300">Jumlah: <strong>Rp320.000</strong> ($20)</p>
+      <p class="mt-4 text-slate-300">Scan QR DANA di bawah ini dan lakukan pembayaran. Setelah membayar, tekan tombol <strong>"Saya sudah bayar"</strong> lalu kirim bukti pembayaran ke WhatsApp Admin.</p>
 
-  <!-- Gambar QR Dana kamu -->
-  <img src="dana_qr.jpg" alt="QR Code Pembayaran" width="250">
+      <div class="mt-6 flex flex-col md:flex-row gap-6 items-start">
+        <div class="md:w-1/2 bg-slate-800 p-4 rounded-md text-center">
+          <img src="dana_qr.jpg" alt="QR DANA" class="mx-auto w-64 rounded-md"/>
+          <div class="mt-3 text-slate-300">Scan pake aplikasi DANA / QR scanner</div>
+        </div>
 
-  <br><br>
-  <p><strong>Sudah bayar?</strong></p>
-  <button onclick="window.location.href='https://wa.me/6289520308062?text=Halo%20saya%20sudah%20bayar%20paket%20Rp20'">
-    ✅ Sudah Bayar (Lanjut ke WhatsApp)
-  </button>
+        <div class="md:flex-1">
+          <div class="bg-slate-800 p-4 rounded-md">
+            <h3 class="font-semibold">Langkah Pembayaran</h3>
+            <ol class="list-decimal ml-5 mt-2 text-slate-300">
+              <li>Scan QR DANA & bayar sebesar <strong>Rp320.000</strong>.</li>
+              <li>Kembali ke halaman ini dan tekan tombol <strong>"Saya sudah bayar"</strong>.</li>
+              <li>Klik tombol chat WhatsApp untuk mengirim bukti pembayaran dan konfirmasi.</li>
+            </ol>
+
+            <div class="mt-4 flex gap-3">
+              <button onclick="paidAndConfirm('$20 → Akun $2,000','Rp320.000')" class="px-4 py-2 bg-green-500 rounded-md font-semibold">✅ Saya sudah bayar</button>
+              <a href="https://wa.me/6289520308062?text=Saya%20telah%20membayar%20paket%20$20 → Akun $2,000%20sebesar%20Rp320.000%20-%20Mohon%20konfirmasi" target="_blank" class="px-4 py-2 bg-indigo-600 rounded-md font-semibold">Chat WA Admin</a>
+            </div>
+
+            <div class="mt-3 text-sm text-slate-400">Nomor Admin: <strong>0895-2030-8062</strong></div>
+            <div class="mt-2 text-xs text-slate-500">Pastikan menyimpan bukti transaksi.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    
+function goToPay(amountId) {
+  // Redirect to corresponding payment page
+  if (amountId === 'p10') window.location.href = 'pay-10.html';
+  if (amountId === 'p20') window.location.href = 'pay-20.html';
+  if (amountId === 'p30') window.location.href = 'pay-30.html';
+}
+
+function paidAndConfirm(packageName, rpAmount) {
+  // Mark as paid (client-side) and go to confirm page with query params
+  const params = new URLSearchParams({pkg: packageName, amount: rpAmount});
+  window.location.href = 'confirm.html?' + params.toString();
+}
+
+  </script>
 </body>
 </html>
