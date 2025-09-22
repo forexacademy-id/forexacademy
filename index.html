@@ -3,12 +3,42 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Registrasi - Forex Academy</title>
+  <title>Forex Academy - Prop Firm Termurah di Indonesia</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-b from-slate-900 to-slate-800 text-slate-100">
+  <!-- Hero Section -->
+  <section class="text-center py-12 px-6 bg-slate-900/50">
+    <h1 class="text-3xl md:text-4xl font-bold">Forex Academy</h1>
+    <p class="mt-3 text-lg text-slate-300">Prop Firm Termurah di Indonesia</p>
+    <p class="mt-2 text-slate-400 max-w-2xl mx-auto">
+      Kesempatan terbaik untuk trader Indonesia! Mulai challenge dengan modal kecil, raih profit besar, 
+      dan nikmati profit split 90% untuk trader.
+    </p>
+  </section>
+
+  <!-- Tentang -->
+  <section class="max-w-4xl mx-auto p-6 text-center">
+    <h2 class="text-2xl font-bold">Kenapa Memilih Forex Academy?</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-3 text-left">
+      <div class="bg-slate-900/40 p-4 rounded-lg shadow">
+        <h3 class="font-semibold text-lg">💰 Biaya Terjangkau</h3>
+        <p class="text-slate-300 text-sm mt-2">Mulai hanya dari Rp160.000 untuk challenge akun $1,000.</p>
+      </div>
+      <div class="bg-slate-900/40 p-4 rounded-lg shadow">
+        <h3 class="font-semibold text-lg">📈 Profit Split 90/10</h3>
+        <p class="text-slate-300 text-sm mt-2">Trader menikmati 90% profit, prop firm hanya 10%.</p>
+      </div>
+      <div class="bg-slate-900/40 p-4 rounded-lg shadow">
+        <h3 class="font-semibold text-lg">🎯 Aturan Simple</h3>
+        <p class="text-slate-300 text-sm mt-2">Drawdown harian 6%, bulanan 10%, target profit 9%.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form Registrasi -->
   <div class="max-w-3xl mx-auto p-6">
-    <h1 class="text-2xl font-bold text-center">Form Registrasi</h1>
+    <h2 class="text-2xl font-bold text-center">Form Registrasi</h2>
     <form id="regForm" class="mt-6 space-y-4">
       <div>
         <label class="block mb-1">Nama Lengkap</label>
@@ -60,6 +90,11 @@
     </form>
   </div>
 
+  <!-- Footer -->
+  <footer class="bg-slate-900/70 text-center py-4 mt-8 text-slate-400 text-sm">
+    © 2025 Forex Academy — Prop Firm Termurah di Indonesia
+  </footer>
+
   <script>
     function goPay(target) {
       const form = document.getElementById("regForm");
@@ -68,7 +103,6 @@
       for (const [key, value] of data.entries()) {
         params.append(key, value);
       }
-      // arahkan ke halaman pay-*.html dengan data registrasi
       window.location.href = target + "?" + params.toString();
     }
   </script>
