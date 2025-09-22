@@ -1,22 +1,71 @@
-            <a href="pay-20.html" class="px-4 py-2 bg-indigo-600 rounded-md font-semibold">Bayar Rp320.000 (Akun $2,000)</a>
-            <a href="pay-30.html" class="px-4 py-2 bg-indigo-600 rounded-md font-semibold">Bayar Rp480.000 (Akun $3,000)</a>
-          </div>
-        </div>
-        <div class="hidden md:block text-slate-400">Atau hubungi admin: <strong>0895-2030-8062</strong></div>
-      </div>
-    </section>
-
-    <section class="mt-10 text-center text-slate-400">
-      <p><strong>Catatan:</strong> Trading mengandung risiko. Pastikan memahami risiko sebelum memulai.</p>
-    </section>
-  </main>
-
-  <footer class="max-w-6xl mx-auto p-6 text-sm text-slate-400 text-center">
-    © 2025 Forex Academy - Prop Firm Indonesia
-  </footer>
-
-  <script>
-    {common_js}
-  </script>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrasi Forex Academy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #007bff; /* biru */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .form-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .form-container img {
+      width: 150px;
+      margin-bottom: 15px;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <!-- Logo (pastikan sudah upload logo.png ke repo) -->
+    <img src="logo.png" alt="Logo Forex Academy">
+    
+    <h2>Form Registrasi</h2>
+    <form action="confirm.html" method="get">
+      <input type="text" name="nama" placeholder="Nama Lengkap" required><br>
+      <input type="text" name="alamat" placeholder="Alamat" required><br>
+      <input type="number" name="umur" placeholder="Umur" min="10" max="100" required><br>
+      <input type="tel" name="hp" placeholder="No HP" required><br>
+      <input type="email" name="email" placeholder="Email" required><br>
+      <input type="text" name="rekening" placeholder="No Rekening (Dana)" required><br>
+      <button type="submit">Daftar & Lanjut ke Challenge</button>
+    </form>
+  </div>
 </body>
 </html>
