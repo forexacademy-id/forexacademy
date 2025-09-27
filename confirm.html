@@ -22,13 +22,27 @@
   </div>
 
   <script>
-    // parse query params
+    // Ambil query params (paket + jumlah)
     const params = new URLSearchParams(window.location.search);
     const pkg = params.get('pkg') || 'Paket';
     const amount = params.get('amount') || '';
+
+    // Cek apakah user sudah login
+    const user = JSON.parse(localStorage.getItem("forexUser") || "{}");
+    if (!user.nama || !user.email || !user.hp) {
+      alert("Silakan login dulu.");
+      window.location.href = "index.html";
+    }
+
+    // Update ringkasan pembayaran
+    document.getElementById('summary').innerText = 
+      `Anda memilih: ${pkg} — Jumlah: ${amount}.
+Nama: ${user.nama}, Email: ${user.email}, HP: ${user.hp}.`;
+
+    // Generate link WhatsApp otomatis
     const wa = '6289520308062';
-    document.getElementById('summary').innerText = `Anda memilih: ${pkg} — Jumlah: ${amount}. Klik tombol di bawah untuk chat dan kirim bukti pembayaran.`;
-    const msg = encodeURIComponent(`Saya%20telah%20membayar%20${pkg}%20sebesar%20${amount}%20.%20Mohon%20konfirmasi%20dan%20berikan%20akses%20challenge.`);
+    const msg = encodeURIComponent(`Saya telah membayar ${pkg} sebesar ${amount}.
+Nama: ${user.nama}, Email: ${user.email}, HP: ${user.hp}. Mohon konfirmasi & akses challenge.`);
     document.getElementById('waLink').href = `https://wa.me/${wa}?text=${msg}`;
   </script>
 </body>
