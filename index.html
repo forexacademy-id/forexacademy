@@ -17,27 +17,8 @@
     </p>
   </section>
 
-  <!-- Aturan -->
-  <section class="max-w-4xl mx-auto p-6 text-center">
-    <h2 class="text-2xl font-bold">Kenapa Memilih Forex Academy?</h2>
-    <div class="mt-6 grid gap-6 md:grid-cols-3 text-left">
-      <div class="bg-slate-900/40 p-4 rounded-lg shadow">
-        <h3 class="font-semibold text-lg">💰 Biaya Terjangkau</h3>
-        <p class="text-slate-300 text-sm mt-2">Mulai hanya dari Rp160.000 untuk challenge akun $1,000.</p>
-      </div>
-      <div class="bg-slate-900/40 p-4 rounded-lg shadow">
-        <h3 class="font-semibold text-lg">📈 Profit Split 90/10</h3>
-        <p class="text-slate-300 text-sm mt-2">Trader menikmati 90% profit, prop firm hanya 10%.</p>
-      </div>
-      <div class="bg-slate-900/40 p-4 rounded-lg shadow">
-        <h3 class="font-semibold text-lg">🎯 Aturan Simple</h3>
-        <p class="text-slate-300 text-sm mt-2">Drawdown harian 6%, bulanan 10%, target profit 9%.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- Login & Registrasi -->
-  <section class="max-w-3xl mx-auto p-6">
+  <section class="max-w-3xl mx-auto p-6" id="authSection">
     <h2 class="text-2xl font-bold text-center">Form Registrasi / Masuk</h2>
 
     <!-- Registrasi -->
@@ -55,6 +36,22 @@
       <input id="loginEmail" type="email" placeholder="Email" class="w-full mt-3 p-2 rounded-md text-black"/>
       <input id="loginPass" type="password" placeholder="Password" class="w-full mt-3 p-2 rounded-md text-black"/>
       <button onclick="login()" class="w-full mt-4 px-6 py-3 bg-blue-600 rounded-md font-semibold">Masuk</button>
+    </div>
+  </section>
+
+  <!-- Pilih Paket Challenge (hidden dulu, muncul setelah login) -->
+  <section class="max-w-3xl mx-auto p-6 hidden" id="paketSection">
+    <h2 class="text-2xl font-bold text-center mb-6">Pilih Paket Challenge</h2>
+    <div class="flex flex-col gap-4">
+      <button onclick="goPay('pay-10.html')" class="px-6 py-3 bg-green-600 rounded-md font-semibold">
+        Rp 160.000 — Paket $10 (Akun $1,000)
+      </button>
+      <button onclick="goPay('pay-20.html')" class="px-6 py-3 bg-blue-600 rounded-md font-semibold">
+        Rp 320.000 — Paket $20 (Akun $2,000)
+      </button>
+      <button onclick="goPay('pay-30.html')" class="px-6 py-3 bg-purple-600 rounded-md font-semibold">
+        Rp 480.000 — Paket $30 (Akun $3,000)
+      </button>
     </div>
   </section>
 
@@ -86,7 +83,7 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    // 🔹 Registrasi
+    // Registrasi
     window.register = async () => {
       const nama = document.getElementById("regNama").value;
       const email = document.getElementById("regEmail").value;
@@ -95,7 +92,6 @@
         const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
         const user = userCredential.user;
         await setDoc(doc(db, "users", user.uid), { nama, email });
-
         alert("✅ Registrasi sukses! Silakan login.");
       } catch (err) {
         if (err.code === "auth/email-already-in-use") {
@@ -110,14 +106,19 @@
       }
     };
 
-    // 🔹 Login
+    // Login
     window.login = async () => {
       const email = document.getElementById("loginEmail").value;
       const pass = document.getElementById("loginPass").value;
       try {
         await signInWithEmailAndPassword(auth, email, pass);
         alert("✅ Login sukses!");
-        window.location.href = "paket.html"; // arahkan ke halaman pilih paket
+
+        // Sembunyikan form login/registrasi
+        document.getElementById("authSection").classList.add("hidden");
+        // Tampilkan pilihan paket
+        document.getElementById("paketSection").classList.remove("hidden");
+
       } catch (err) {
         if (err.code === "auth/user-not-found") {
           alert("⚠️ Akun tidak ditemukan. Silakan registrasi dulu.");
@@ -127,6 +128,11 @@
           alert("⚠️ Gagal login. Coba lagi.");
         }
       }
+    };
+
+    // Pindah ke halaman pembayaran
+    window.goPay = (target) => {
+      window.location.href = target;
     };
   </script>
 </body>
