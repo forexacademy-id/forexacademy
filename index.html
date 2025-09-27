@@ -17,7 +17,7 @@
     </p>
   </section>
 
-  <!-- Tentang -->
+  <!-- Aturan -->
   <section class="max-w-4xl mx-auto p-6 text-center">
     <h2 class="text-2xl font-bold">Kenapa Memilih Forex Academy?</h2>
     <div class="mt-6 grid gap-6 md:grid-cols-3 text-left">
@@ -71,7 +71,7 @@
     import { getFirestore, doc, setDoc }
       from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
-    // 🔹 Config Firebase kamu
+    // 🔹 Config Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyDuaOPhp6EHId3dUt6Rdt62HOMZXawhbFE",
       authDomain: "forex-academy-8a655.firebaseapp.com",
@@ -95,9 +95,18 @@
         const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
         const user = userCredential.user;
         await setDoc(doc(db, "users", user.uid), { nama, email });
-        alert("Registrasi sukses! Silakan login.");
+
+        alert("✅ Registrasi sukses! Silakan login.");
       } catch (err) {
-        alert("Error: " + err.message);
+        if (err.code === "auth/email-already-in-use") {
+          alert("⚠️ Email sudah terdaftar, silakan masuk akun.");
+        } else if (err.code === "auth/invalid-email") {
+          alert("⚠️ Format email tidak valid.");
+        } else if (err.code === "auth/weak-password") {
+          alert("⚠️ Password terlalu lemah (min. 6 karakter).");
+        } else {
+          alert("⚠️ Terjadi kesalahan. Coba lagi.");
+        }
       }
     };
 
@@ -107,10 +116,16 @@
       const pass = document.getElementById("loginPass").value;
       try {
         await signInWithEmailAndPassword(auth, email, pass);
-        alert("Login sukses!");
-        window.location.href = "paket.html"; // redirect ke halaman pilih paket challenge
+        alert("✅ Login sukses!");
+        window.location.href = "paket.html"; // arahkan ke halaman pilih paket
       } catch (err) {
-        alert("Login gagal: " + err.message);
+        if (err.code === "auth/user-not-found") {
+          alert("⚠️ Akun tidak ditemukan. Silakan registrasi dulu.");
+        } else if (err.code === "auth/wrong-password") {
+          alert("⚠️ Password salah.");
+        } else {
+          alert("⚠️ Gagal login. Coba lagi.");
+        }
       }
     };
   </script>
