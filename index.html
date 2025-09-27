@@ -17,25 +17,6 @@
     </p>
   </section>
 
-  <!-- Tentang -->
-  <section class="max-w-4xl mx-auto p-6 text-center">
-    <h2 class="text-2xl font-bold">Kenapa Memilih Forex Academy?</h2>
-    <div class="mt-6 grid gap-6 md:grid-cols-3 text-left">
-      <div class="bg-slate-900/40 p-4 rounded-lg shadow">
-        <h3 class="font-semibold text-lg">💰 Biaya Terjangkau</h3>
-        <p class="text-slate-300 text-sm mt-2">Mulai hanya dari Rp160.000 untuk challenge akun $1,000.</p>
-      </div>
-      <div class="bg-slate-900/40 p-4 rounded-lg shadow">
-        <h3 class="font-semibold text-lg">📈 Profit Split 90/10</h3>
-        <p class="text-slate-300 text-sm mt-2">Trader menikmati 90% profit, prop firm hanya 10%.</p>
-      </div>
-      <div class="bg-slate-900/40 p-4 rounded-lg shadow">
-        <h3 class="font-semibold text-lg">🎯 Aturan Simple</h3>
-        <p class="text-slate-300 text-sm mt-2">Drawdown harian 6%, bulanan 10%, target profit 9%.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- Form Registrasi -->
   <div class="max-w-3xl mx-auto p-6">
     <h2 class="text-2xl font-bold text-center">Form Registrasi</h2>
@@ -74,20 +55,17 @@
 
       <p class="mt-6 text-center text-slate-300 font-semibold">Pilih Paket Challenge</p>
       <div class="flex flex-col gap-3 mt-2">
-        <button type="button" onclick="goPay('pay-10.html')"
-          class="px-6 py-3 bg-green-500 rounded-md font-semibold">
-          Rp 160.000 — Paket $10 (Akun $1,000)
-        </button>
-        <button type="button" onclick="goPay('pay-20.html')"
-          class="px-6 py-3 bg-blue-500 rounded-md font-semibold">
-          Rp 320.000 — Paket $20 (Akun $2,000)
-        </button>
-        <button type="button" onclick="goPay('pay-30.html')"
-          class="px-6 py-3 bg-purple-500 rounded-md font-semibold">
-          Rp 480.000 — Paket $30 (Akun $3,000)
-        </button>
+        <button type="button" onclick="goPay('pay-10.html')" class="px-6 py-3 bg-green-500 rounded-md font-semibold">Rp 160.000 — Paket $10 (Akun $1,000)</button>
+        <button type="button" onclick="goPay('pay-20.html')" class="px-6 py-3 bg-blue-500 rounded-md font-semibold">Rp 320.000 — Paket $20 (Akun $2,000)</button>
+        <button type="button" onclick="goPay('pay-30.html')" class="px-6 py-3 bg-purple-500 rounded-md font-semibold">Rp 480.000 — Paket $30 (Akun $3,000)</button>
       </div>
     </form>
+
+    <!-- Tombol Masuk Akun -->
+    <div id="authSection" class="text-center mt-6 hidden">
+      <button onclick="loginUser()" class="px-6 py-3 bg-blue-600 rounded-md font-semibold">🔑 Masuk Akun</button>
+      <button onclick="logoutUser()" class="ml-3 px-6 py-3 bg-red-600 rounded-md font-semibold">🚪 Keluar</button>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -96,14 +74,36 @@
   </footer>
 
   <script>
-    function goPay(target) {
-      const form = document.getElementById("regForm");
-      const data = new FormData(form);
-      const params = new URLSearchParams();
-      for (const [key, value] of data.entries()) {
-        params.append(key, value);
+    const form = document.getElementById("regForm");
+    const authSection = document.getElementById("authSection");
+
+    // cek saat halaman load
+    window.onload = () => {
+      const user = localStorage.getItem("forexUser");
+      if (user) {
+        form.classList.add("hidden");
+        authSection.classList.remove("hidden");
       }
+    };
+
+    function goPay(target) {
+      const data = new FormData(form);
+      const userObj = {};
+      for (const [key, value] of data.entries()) {
+        userObj[key] = value;
+      }
+      localStorage.setItem("forexUser", JSON.stringify(userObj));
+      const params = new URLSearchParams(userObj);
       window.location.href = target + "?" + params.toString();
+    }
+
+    function loginUser() {
+      window.location.href = "confirm.html";
+    }
+
+    function logoutUser() {
+      localStorage.removeItem("forexUser");
+      window.location.reload();
     }
   </script>
 </body>
