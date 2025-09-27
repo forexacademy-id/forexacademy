@@ -7,6 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-b from-slate-900 to-slate-800 text-slate-100">
+
   <!-- Hero Section -->
   <section class="text-center py-12 px-6 bg-slate-900/50">
     <h1 class="text-3xl md:text-4xl font-bold">Forex Academy</h1>
@@ -15,6 +16,17 @@
       Kesempatan terbaik untuk trader Indonesia! Mulai challenge dengan modal kecil, raih profit besar, 
       dan nikmati profit split 90% untuk trader.
     </p>
+  </section>
+
+  <!-- Aturan Challenge -->
+  <section class="max-w-4xl mx-auto p-6 text-center" id="aturanSection">
+    <h2 class="text-2xl font-bold">📋 Aturan Challenge</h2>
+    <ul class="list-disc ml-6 text-slate-300 text-sm space-y-1 text-left mt-4">
+      <li>Drawdown Harian Maksimal: <strong>6%</strong></li>
+      <li>Drawdown Bulanan Maksimal: <strong>10%</strong></li>
+      <li>Target Profit Bulanan: <strong>9%</strong></li>
+      <li>Pembagian Profit: <strong>90% Trader</strong> / <strong>10% Prop Firm</strong></li>
+    </ul>
   </section>
 
   <!-- Login & Registrasi -->
@@ -43,13 +55,13 @@
   <section class="max-w-3xl mx-auto p-6 hidden" id="paketSection">
     <h2 class="text-2xl font-bold text-center mb-6">Pilih Paket Challenge</h2>
     <div class="flex flex-col gap-4">
-      <button onclick="goPay('pay-10.html')" class="px-6 py-3 bg-green-600 rounded-md font-semibold">
+      <button onclick="goPay('pay-10.html', 'Paket $10 (Rp160.000)')" class="px-6 py-3 bg-green-600 rounded-md font-semibold">
         Rp 160.000 — Paket $10 (Akun $1,000)
       </button>
-      <button onclick="goPay('pay-20.html')" class="px-6 py-3 bg-blue-600 rounded-md font-semibold">
+      <button onclick="goPay('pay-20.html', 'Paket $20 (Rp320.000)')" class="px-6 py-3 bg-blue-600 rounded-md font-semibold">
         Rp 320.000 — Paket $20 (Akun $2,000)
       </button>
-      <button onclick="goPay('pay-30.html')" class="px-6 py-3 bg-purple-600 rounded-md font-semibold">
+      <button onclick="goPay('pay-30.html', 'Paket $30 (Rp480.000)')" class="px-6 py-3 bg-purple-600 rounded-md font-semibold">
         Rp 480.000 — Paket $30 (Akun $3,000)
       </button>
     </div>
@@ -92,10 +104,12 @@
         const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
         const user = userCredential.user;
         await setDoc(doc(db, "users", user.uid), { nama, email });
-        alert("✅ Registrasi sukses! Silakan login.");
+        localStorage.setItem("userEmail", email);
+        alert("✅ Registrasi sukses! Silakan pilih paket.");
+        showPaketSection();
       } catch (err) {
         if (err.code === "auth/email-already-in-use") {
-          alert("⚠️ Email sudah terdaftar, silakan masuk akun.");
+          alert("⚠️ Email sudah terdaftar. Silakan masuk dengan form login.");
         } else if (err.code === "auth/invalid-email") {
           alert("⚠️ Format email tidak valid.");
         } else if (err.code === "auth/weak-password") {
@@ -112,13 +126,9 @@
       const pass = document.getElementById("loginPass").value;
       try {
         await signInWithEmailAndPassword(auth, email, pass);
+        localStorage.setItem("userEmail", email);
         alert("✅ Login sukses!");
-
-        // Sembunyikan form login/registrasi
-        document.getElementById("authSection").classList.add("hidden");
-        // Tampilkan pilihan paket
-        document.getElementById("paketSection").classList.remove("hidden");
-
+        showPaketSection();
       } catch (err) {
         if (err.code === "auth/user-not-found") {
           alert("⚠️ Akun tidak ditemukan. Silakan registrasi dulu.");
@@ -130,8 +140,15 @@
       }
     };
 
-    // Pindah ke halaman pembayaran
-    window.goPay = (target) => {
+    // Tampilkan paket challenge
+    function showPaketSection() {
+      document.getElementById("authSection").classList.add("hidden");
+      document.getElementById("paketSection").classList.remove("hidden");
+    }
+
+    // Simpan paket yang dipilih dan pindah ke halaman pembayaran
+    window.goPay = (target, paket) => {
+      localStorage.setItem("paketDipilih", paket);
       window.location.href = target;
     };
   </script>
