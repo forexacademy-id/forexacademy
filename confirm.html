@@ -7,62 +7,29 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-b from-slate-900 to-slate-800 text-slate-100">
+  <div class="max-w-3xl mx-auto p-6">
+    <a href="index.html" class="text-sm text-slate-300 underline">← Kembali</a>
+    <div class="bg-slate-900/40 mt-4 p-6 rounded-xl shadow-xl text-center">
+      <h1 class="text-2xl font-bold">Langkah Terakhir: Konfirmasi Pembayaran</h1>
+      <p class="mt-3 text-slate-300" id="summary">Memproses...</p>
 
-  <!-- Header -->
-  <section class="text-center py-10 bg-slate-900/50">
-    <h1 class="text-3xl font-bold">Konfirmasi Pembayaran</h1>
-    <p class="mt-2 text-slate-400">Pastikan data Anda sudah benar sebelum melanjutkan</p>
-  </section>
+      <div class="mt-6">
+        <a id="waLink" href="#" target="_blank" class="px-6 py-3 bg-green-500 rounded-md font-semibold">Chat WhatsApp & Kirim Bukti</a>
+      </div>
 
-  <!-- Aturan Challenge -->
-  <div class="max-w-3xl mx-auto bg-slate-900/40 p-6 rounded-lg mt-8">
-    <h2 class="text-xl font-semibold text-center mb-4">📋 Aturan Challenge</h2>
-    <ul class="list-disc ml-6 text-slate-300 text-sm space-y-1">
-      <li>Drawdown Harian Maksimal: <strong>6%</strong></li>
-      <li>Drawdown Bulanan Maksimal: <strong>10%</strong></li>
-      <li>Target Profit Bulanan: <strong>9%</strong></li>
-      <li>Pembagian Profit: <strong>90% Trader</strong> / <strong>10% Prop Firm</strong></li>
-    </ul>
+      <div class="mt-4 text-sm text-slate-400">Setelah admin konfirmasi via WhatsApp, kami akan memberikan akun demo untuk memulai challenge.</div>
+    </div>
   </div>
-
-  <!-- Detail User -->
-  <div class="max-w-2xl mx-auto bg-slate-900/40 p-6 rounded-lg mt-8">
-    <h2 class="text-lg font-semibold mb-3">👤 Data User</h2>
-    <p>Email: <span id="userEmail" class="font-semibold text-green-400"></span></p>
-    <p>Paket: <span id="paketDipilih" class="font-semibold text-blue-400"></span></p>
-  </div>
-
-  <!-- Tombol Chat WA -->
-  <div class="max-w-2xl mx-auto text-center mt-8">
-    <button onclick="kirimWA()" class="px-6 py-3 bg-green-600 rounded-md font-semibold">
-      💬 Chat Admin via WhatsApp
-    </button>
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-slate-900/70 text-center py-4 mt-8 text-slate-400 text-sm">
-    © 2025 Forex Academy — Prop Firm Termurah di Indonesia
-  </footer>
 
   <script>
-    // 🔹 Ambil data user dari localStorage
-    const userEmail = localStorage.getItem("userEmail");
-    const paketDipilih = localStorage.getItem("paketDipilih");
-
-    if (!userEmail) {
-      alert("⚠️ Anda harus login dulu.");
-      window.location.href = "index.html"; // kalau belum login, balik ke index
-    } else {
-      document.getElementById("userEmail").innerText = userEmail;
-      document.getElementById("paketDipilih").innerText = paketDipilih ? paketDipilih : "-";
-    }
-
-    // 🔹 Fungsi kirim WA
-    function kirimWA() {
-      const pesan = `Halo Admin, saya sudah melakukan pembayaran.\n\n📧 Email: ${userEmail}\n📦 Paket: ${paketDipilih}`;
-      const nomorAdmin = "6281234567890"; // ganti dengan nomor WA admin
-      window.open(`https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesan)}`, "_blank");
-    }
+    // parse query params
+    const params = new URLSearchParams(window.location.search);
+    const pkg = params.get('pkg') || 'Paket';
+    const amount = params.get('amount') || '';
+    const wa = '6289520308062';
+    document.getElementById('summary').innerText = `Anda memilih: ${pkg} — Jumlah: ${amount}. Klik tombol di bawah untuk chat dan kirim bukti pembayaran.`;
+    const msg = encodeURIComponent(`Saya%20telah%20membayar%20${pkg}%20sebesar%20${amount}%20.%20Mohon%20konfirmasi%20dan%20berikan%20akses%20challenge.`);
+    document.getElementById('waLink').href = `https://wa.me/${wa}?text=${msg}`;
   </script>
 </body>
 </html>
