@@ -7,6 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-b from-slate-900 to-slate-800 text-slate-100">
+
   <!-- Hero Section -->
   <section class="text-center py-12 px-6 bg-slate-900/50">
     <h1 class="text-3xl md:text-4xl font-bold">Forex Academy</h1>
@@ -17,7 +18,7 @@
     </p>
   </section>
 
-  <!-- Form Registrasi -->
+  <!-- Registrasi -->
   <div id="regSection" class="max-w-3xl mx-auto p-6">
     <h2 class="text-2xl font-bold text-center">Form Registrasi</h2>
     <form id="regForm" class="mt-6 space-y-4">
@@ -42,37 +43,51 @@
         <input type="text" name="rekening" required class="w-full p-2 rounded-md text-black"/>
       </div>
 
-      <p class="mt-6 text-center text-slate-300 font-semibold">Pilih Paket Challenge</p>
-      <div class="flex flex-col gap-3 mt-2">
-        <button type="button" onclick="goPay('pay-10.html')" class="px-6 py-3 bg-green-500 rounded-md font-semibold">Rp 160.000 — Paket $10 (Akun $1,000)</button>
-        <button type="button" onclick="goPay('pay-20.html')" class="px-6 py-3 bg-blue-500 rounded-md font-semibold">Rp 320.000 — Paket $20 (Akun $2,000)</button>
-        <button type="button" onclick="goPay('pay-30.html')" class="px-6 py-3 bg-purple-500 rounded-md font-semibold">Rp 480.000 — Paket $30 (Akun $3,000)</button>
-      </div>
+      <button type="button" onclick="registerUser()" 
+        class="w-full px-6 py-3 bg-green-600 rounded-md font-semibold">Daftar & Pilih Paket</button>
     </form>
+    <p class="mt-4 text-center text-slate-400">
+      Sudah punya akun? 
+      <button onclick="showLogin()" class="underline text-indigo-400">Masuk Akun</button>
+    </p>
   </div>
 
-  <!-- Tombol Auth -->
-  <div id="authSection" class="text-center mt-6 hidden">
-    <button onclick="showLogin()" class="px-6 py-3 bg-blue-600 rounded-md font-semibold">🔑 Masuk Akun</button>
-    <button onclick="logoutUser()" class="ml-3 px-6 py-3 bg-red-600 rounded-md font-semibold">🚪 Keluar</button>
+  <!-- Login -->
+  <div id="loginSection" class="max-w-3xl mx-auto p-6 hidden">
+    <h2 class="text-2xl font-bold text-center">Login Akun</h2>
+    <form id="loginForm" class="mt-6 space-y-4">
+      <div>
+        <label class="block mb-1">Email</label>
+        <input type="email" name="email" required class="w-full p-2 rounded-md text-black"/>
+      </div>
+      <div>
+        <label class="block mb-1">Nomor HP</label>
+        <input type="text" name="hp" required class="w-full p-2 rounded-md text-black"/>
+      </div>
+      <button type="button" onclick="loginUser()" 
+        class="w-full px-6 py-3 bg-blue-600 rounded-md font-semibold">Masuk</button>
+    </form>
+    <p class="mt-4 text-center text-slate-400">
+      Belum punya akun? 
+      <button onclick="showRegister()" class="underline text-indigo-400">Registrasi</button>
+    </p>
   </div>
 
-  <!-- Form Login -->
-  <div id="loginForm" class="max-w-md mx-auto p-6 hidden bg-slate-800 rounded-md mt-6">
-    <h3 class="text-lg font-bold text-center mb-3">Masuk Akun</h3>
-    <input type="email" id="loginEmail" placeholder="Email" class="w-full p-2 mb-3 rounded-md text-black"/>
-    <input type="text" id="loginHp" placeholder="Nomor HP" class="w-full p-2 mb-3 rounded-md text-black"/>
-    <button onclick="loginUser()" class="w-full px-6 py-3 bg-green-600 rounded-md font-semibold">Masuk</button>
-  </div>
-
-  <!-- Pilihan Paket untuk User Lama -->
-  <div id="packageSection" class="text-center mt-6 hidden">
-    <p class="text-slate-300 font-semibold mb-3">Pilih Paket Challenge</p>
-    <div class="flex flex-col gap-3 mt-2">
-      <button type="button" onclick="goPay('pay-10.html')" class="px-6 py-3 bg-green-500 rounded-md font-semibold">Rp 160.000 — Paket $10 (Akun $1,000)</button>
-      <button type="button" onclick="goPay('pay-20.html')" class="px-6 py-3 bg-blue-500 rounded-md font-semibold">Rp 320.000 — Paket $20 (Akun $2,000)</button>
-      <button type="button" onclick="goPay('pay-30.html')" class="px-6 py-3 bg-purple-500 rounded-md font-semibold">Rp 480.000 — Paket $30 (Akun $3,000)</button>
+  <!-- Pilih Paket -->
+  <div id="packageSection" class="max-w-3xl mx-auto p-6 hidden">
+    <h2 class="text-2xl font-bold text-center">Pilih Paket Challenge</h2>
+    <div class="flex flex-col gap-3 mt-6">
+      <button type="button" onclick="goPay('pay-10.html')" class="px-6 py-3 bg-green-500 rounded-md font-semibold">
+        Rp 160.000 — Paket $10 (Akun $1,000)
+      </button>
+      <button type="button" onclick="goPay('pay-20.html')" class="px-6 py-3 bg-blue-500 rounded-md font-semibold">
+        Rp 320.000 — Paket $20 (Akun $2,000)
+      </button>
+      <button type="button" onclick="goPay('pay-30.html')" class="px-6 py-3 bg-purple-500 rounded-md font-semibold">
+        Rp 480.000 — Paket $30 (Akun $3,000)
+      </button>
     </div>
+    <button onclick="logoutUser()" class="mt-6 px-6 py-3 bg-red-600 rounded-md font-semibold">🚪 Keluar</button>
   </div>
 
   <!-- Footer -->
@@ -82,45 +97,48 @@
 
   <script>
     const regSection = document.getElementById("regSection");
-    const form = document.getElementById("regForm");
-    const authSection = document.getElementById("authSection");
-    const loginForm = document.getElementById("loginForm");
+    const loginSection = document.getElementById("loginSection");
     const packageSection = document.getElementById("packageSection");
 
     window.onload = () => {
-      const user = localStorage.getItem("forexUser");
-      if (user) {
+      const user = JSON.parse(localStorage.getItem("forexUser") || "{}");
+      if (user && user.nama) {
+        // Kalau sudah pernah login, langsung ke pilih paket
         regSection.classList.add("hidden");
-        authSection.classList.remove("hidden");
+        loginSection.classList.add("hidden");
+        packageSection.classList.remove("hidden");
       }
     };
 
-    function goPay(target) {
+    function registerUser() {
+      const data = new FormData(document.getElementById("regForm"));
       let userObj = {};
-      if (!localStorage.getItem("forexUser")) {
-        const data = new FormData(form);
-        for (const [key, value] of data.entries()) {
-          userObj[key] = value;
-        }
-        localStorage.setItem("forexUser", JSON.stringify(userObj));
-      } else {
-        userObj = JSON.parse(localStorage.getItem("forexUser"));
+      for (const [key, value] of data.entries()) {
+        userObj[key] = value;
       }
-      const params = new URLSearchParams(userObj);
-      window.location.href = target + "?" + params.toString();
+      localStorage.setItem("forexUser", JSON.stringify(userObj));
+      regSection.classList.add("hidden");
+      packageSection.classList.remove("hidden");
     }
 
     function showLogin() {
-      loginForm.classList.remove("hidden");
+      regSection.classList.add("hidden");
+      loginSection.classList.remove("hidden");
+    }
+
+    function showRegister() {
+      loginSection.classList.add("hidden");
+      regSection.classList.remove("hidden");
     }
 
     function loginUser() {
-      const email = document.getElementById("loginEmail").value.trim();
-      const hp = document.getElementById("loginHp").value.trim();
+      const data = new FormData(document.getElementById("loginForm"));
+      const email = data.get("email");
+      const hp = data.get("hp");
       const user = JSON.parse(localStorage.getItem("forexUser") || "{}");
 
-      if (email === user.email && hp === user.hp) {
-        loginForm.classList.add("hidden");
+      if (user.email === email && user.hp === hp) {
+        loginSection.classList.add("hidden");
         packageSection.classList.remove("hidden");
       } else {
         alert("Email atau Nomor HP salah!");
@@ -129,7 +147,14 @@
 
     function logoutUser() {
       localStorage.removeItem("forexUser");
-      window.location.reload();
+      packageSection.classList.add("hidden");
+      regSection.classList.remove("hidden");
+    }
+
+    function goPay(target) {
+      const user = JSON.parse(localStorage.getItem("forexUser") || "{}");
+      const params = new URLSearchParams(user);
+      window.location.href = target + "?" + params.toString();
     }
   </script>
 </body>
