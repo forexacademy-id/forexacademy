@@ -7,29 +7,50 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-b from-slate-900 to-slate-800 text-slate-100">
-  <div class="max-w-3xl mx-auto p-6">
-    <a href="index.html" class="text-sm text-slate-300 underline">← Kembali</a>
-    <div class="bg-slate-900/40 mt-4 p-6 rounded-xl shadow-xl text-center">
-      <h1 class="text-2xl font-bold">Langkah Terakhir: Konfirmasi Pembayaran</h1>
-      <p class="mt-3 text-slate-300" id="summary">Memproses...</p>
+  <section class="text-center py-10 bg-slate-900/50">
+    <h1 class="text-3xl font-bold">Konfirmasi Pembayaran</h1>
+    <p class="mt-2 text-slate-400">Pastikan data Anda sudah benar sebelum melanjutkan</p>
+  </section>
 
-      <div class="mt-6">
-        <a id="waLink" href="#" target="_blank" class="px-6 py-3 bg-green-500 rounded-md font-semibold">Chat WhatsApp & Kirim Bukti</a>
-      </div>
-
-      <div class="mt-4 text-sm text-slate-400">Setelah admin konfirmasi via WhatsApp, kami akan memberikan akun demo untuk memulai challenge.</div>
-    </div>
+  <div class="max-w-2xl mx-auto bg-slate-900/40 p-6 rounded-lg mt-8">
+    <h2 class="text-lg font-semibold mb-3">👤 Data User</h2>
+    <p>Email: <span id="userEmail" class="font-semibold text-green-400"></span></p>
+    <p>Paket: <span id="paketDipilih" class="font-semibold text-blue-400"></span></p>
   </div>
 
+  <div class="max-w-2xl mx-auto text-center mt-8">
+    <a href="#" id="waBtn" target="_blank" 
+      class="px-6 py-3 bg-green-600 rounded-md font-semibold">💬 Chat Admin via WhatsApp</a>
+  </div>
+
+  <footer class="bg-slate-900/70 text-center py-4 mt-8 text-slate-400 text-sm">
+    © 2025 Forex Academy — Prop Firm Termurah di Indonesia
+  </footer>
+
   <script>
-    // parse query params
-    const params = new URLSearchParams(window.location.search);
-    const pkg = params.get('pkg') || 'Paket';
-    const amount = params.get('amount') || '';
-    const wa = '6289520308062';
-    document.getElementById('summary').innerText = `Anda memilih: ${pkg} — Jumlah: ${amount}. Klik tombol di bawah untuk chat dan kirim bukti pembayaran.`;
-    const msg = encodeURIComponent(`Saya%20telah%20membayar%20${pkg}%20sebesar%20${amount}%20.%20Mohon%20konfirmasi%20dan%20berikan%20akses%20challenge.`);
-    document.getElementById('waLink').href = `https://wa.me/${wa}?text=${msg}`;
-  </script>
+    window.onload = () => {
+      const email = localStorage.getItem("userEmail");
+      const paket = localStorage.getItem("paketDipilih");
+
+      if (!email) {
+        alert("⚠️ Anda harus login dulu.");
+        window.location.href = "index.html";
+        return;
+      }
+
+      const wa = "6289520308062";
+      const pesan = `Saya telah membayar ${paket}.\n📧 Email: ${email}\nMohon konfirmasi.`;
+      const waBtn = document.getElementById("waBtn");
+      if (waBtn) {
+        waBtn.href = `https://wa.me/${wa}?text=${encodeURIComponent(pesan)}`;
+      }
+    };
+
+    function paidAndConfirm(packageName, rpAmount) {
+      localStorage.setItem("paketDipilih", packageName);
+      const params = new URLSearchParams({pkg: packageName, amount: rpAmount});
+      window.location.href = "confirm.html?" + params.toString();
+    }
+</script>
 </body>
 </html>
