@@ -3,102 +3,153 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Forex Academy</title>
+  <title>Forex Academy - Prop Firm Termurah di Indonesia</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center">
-  <div class="w-full max-w-md bg-slate-900/60 p-6 rounded-xl shadow-xl">
-    <h1 class="text-2xl font-bold text-center mb-4">Forex Academy</h1>
-    <p class="text-center text-slate-400 mb-6">Prop Firm Termurah di Indonesia</p>
+<body class="bg-gradient-to-b from-slate-900 to-slate-800 text-slate-100">
+
+  <!-- Hero Section -->
+  <section class="text-center py-12 px-6 bg-slate-900/50">
+    <h1 class="text-3xl md:text-4xl font-bold">Forex Academy</h1>
+    <p class="mt-3 text-lg text-slate-300">Prop Firm Termurah di Indonesia</p>
+    <p class="mt-2 text-slate-400 max-w-2xl mx-auto">
+      Kesempatan terbaik untuk trader Indonesia! Mulai challenge dengan modal kecil, raih profit besar, 
+      dan nikmati profit split 90% untuk trader.
+    </p>
+  </section>
+
+  <!-- Aturan Challenge -->
+  <section class="max-w-4xl mx-auto p-6 text-center" id="aturanSection">
+    <h2 class="text-2xl font-bold">📋 Aturan Challenge</h2>
+    <ul class="list-disc ml-6 text-slate-300 text-sm space-y-1 text-left mt-4">
+      <li>Drawdown Harian Maksimal: <strong>6%</strong></li>
+      <li>Drawdown Bulanan Maksimal: <strong>10%</strong></li>
+      <li>Target Profit Bulanan: <strong>9%</strong></li>
+      <li>Pembagian Profit: <strong>90% Trader</strong> / <strong>10% Prop Firm</strong></li>
+    </ul>
+  </section>
+
+  <!-- Login & Registrasi -->
+  <section class="max-w-3xl mx-auto p-6" id="authSection">
+    <h2 class="text-2xl font-bold text-center">Form Registrasi / Masuk</h2>
 
     <!-- Registrasi -->
-    <form id="regForm" onsubmit="event.preventDefault(); registerUser();" class="space-y-3">
-      <input type="text" name="nama" placeholder="Nama Lengkap" required class="w-full p-2 rounded bg-slate-800"/>
-      <input type="text" name="hp" placeholder="Nomor HP" required class="w-full p-2 rounded bg-slate-800"/>
-      <input type="email" name="email" placeholder="Email" required class="w-full p-2 rounded bg-slate-800"/>
-      <input type="password" name="password" placeholder="Password" required class="w-full p-2 rounded bg-slate-800"/>
-      <button type="submit" class="w-full bg-green-600 py-2 rounded font-semibold">Daftar</button>
-      <p class="text-sm text-center">Sudah punya akun? 
-        <a href="#" onclick="showLogin()" class="text-indigo-400">Masuk di sini</a>
-      </p>
-    </form>
+    <div class="bg-slate-900/40 p-4 rounded-lg shadow mt-6">
+      <h3 class="text-lg font-semibold text-center">Registrasi Akun Baru</h3>
+      <input id="regNama" type="text" placeholder="Nama Lengkap" class="w-full mt-3 p-2 rounded-md text-black"/>
+      <input id="regEmail" type="email" placeholder="Email" class="w-full mt-3 p-2 rounded-md text-black"/>
+      <input id="regPass" type="password" placeholder="Password" class="w-full mt-3 p-2 rounded-md text-black"/>
+      <button onclick="register()" class="w-full mt-4 px-6 py-3 bg-green-600 rounded-md font-semibold">Daftar</button>
+    </div>
 
     <!-- Login -->
-    <form id="loginForm" onsubmit="event.preventDefault(); loginUser();" class="space-y-3 hidden">
-      <input type="email" name="email" placeholder="Email" required class="w-full p-2 rounded bg-slate-800"/>
-      <input type="password" name="password" placeholder="Password" required class="w-full p-2 rounded bg-slate-800"/>
-      <button type="submit" class="w-full bg-blue-600 py-2 rounded font-semibold">Masuk</button>
-      <p class="text-sm text-center">Belum punya akun? 
-        <a href="#" onclick="showRegister()" class="text-indigo-400">Daftar di sini</a>
-      </p>
-    </form>
-
-    <!-- Paket Challenge -->
-    <div id="challengeSection" class="hidden mt-6">
-      <h2 class="font-bold text-lg mb-3">📋 Aturan Challenge</h2>
-      <ul class="text-slate-300 mb-4 list-disc ml-5">
-        <li>Drawdown Harian Maksimal: 6%</li>
-        <li>Drawdown Bulanan Maksimal: 10%</li>
-        <li>Target Profit Bulanan: 9%</li>
-        <li>Profit Split: 90% Trader / 10% Prop Firm</li>
-      </ul>
-      <h2 class="font-bold text-lg mb-2">Pilih Paket Challenge</h2>
-      <div class="space-y-2">
-        <a href="pay-10.html" class="block text-center bg-green-600 py-2 rounded">Rp160.000 — Paket $10</a>
-        <a href="pay-20.html" class="block text-center bg-blue-600 py-2 rounded">Rp320.000 — Paket $20</a>
-        <a href="pay-30.html" class="block text-center bg-purple-600 py-2 rounded">Rp480.000 — Paket $30</a>
-      </div>
+    <div class="bg-slate-900/40 p-4 rounded-lg shadow mt-6">
+      <h3 class="text-lg font-semibold text-center">Masuk Akun</h3>
+      <input id="loginEmail" type="email" placeholder="Email" class="w-full mt-3 p-2 rounded-md text-black"/>
+      <input id="loginPass" type="password" placeholder="Password" class="w-full mt-3 p-2 rounded-md text-black"/>
+      <button onclick="login()" class="w-full mt-4 px-6 py-3 bg-blue-600 rounded-md font-semibold">Masuk</button>
     </div>
-  </div>
+  </section>
 
-  <script>
-    function showLogin() {
-      document.getElementById("regForm").classList.add("hidden");
-      document.getElementById("loginForm").classList.remove("hidden");
-    }
+  <!-- Pilih Paket Challenge (hidden dulu, muncul setelah login) -->
+  <section class="max-w-3xl mx-auto p-6 hidden" id="paketSection">
+    <h2 class="text-2xl font-bold text-center mb-6">Pilih Paket Challenge</h2>
+    <div class="flex flex-col gap-4">
+      <button onclick="goPay('pay-10.html', 'Paket $10 (Rp160.000)')" class="px-6 py-3 bg-green-600 rounded-md font-semibold">
+        Rp 160.000 — Paket $10 (Akun $1,000)
+      </button>
+      <button onclick="goPay('pay-20.html', 'Paket $20 (Rp320.000)')" class="px-6 py-3 bg-blue-600 rounded-md font-semibold">
+        Rp 320.000 — Paket $20 (Akun $2,000)
+      </button>
+      <button onclick="goPay('pay-30.html', 'Paket $30 (Rp480.000)')" class="px-6 py-3 bg-purple-600 rounded-md font-semibold">
+        Rp 480.000 — Paket $30 (Akun $3,000)
+      </button>
+    </div>
+  </section>
 
-    function showRegister() {
-      document.getElementById("loginForm").classList.add("hidden");
-      document.getElementById("regForm").classList.remove("hidden");
-    }
+  <!-- Footer -->
+  <footer class="bg-slate-900/70 text-center py-4 mt-8 text-slate-400 text-sm">
+    © 2025 Forex Academy — Prop Firm Termurah di Indonesia
+  </footer>
 
-    function registerUser() {
-      const form = document.getElementById("regForm");
-      const data = new FormData(form);
-      const user = {
-        nama: data.get("nama"),
-        hp: data.get("hp"),
-        email: data.get("email"),
-        password: data.get("password")
-      };
-      localStorage.setItem("forexUser", JSON.stringify(user));
-      localStorage.setItem("loggedIn", "false");
-      alert("Registrasi berhasil, silakan login!");
-      showLogin();
-    }
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword }
+      from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc }
+      from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
-    function loginUser() {
-      const form = document.getElementById("loginForm");
-      const data = new FormData(form);
-      const saved = JSON.parse(localStorage.getItem("forexUser") || "{}");
+    // 🔹 Config Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDuaOPhp6EHId3dUt6Rdt62HOMZXawhbFE",
+      authDomain: "forex-academy-8a655.firebaseapp.com",
+      projectId: "forex-academy-8a655",
+      storageBucket: "forex-academy-8a655.appspot.com",
+      messagingSenderId: "1073361426477",
+      appId: "1:1073361426477:web:daec7a329733a1e1e5c0a4",
+      measurementId: "G-XS9XRHTFKY"
+    };
 
-      if (saved.email === data.get("email") && saved.password === data.get("password")) {
-        localStorage.setItem("loggedIn", "true");
-        document.getElementById("regForm").classList.add("hidden");
-        document.getElementById("loginForm").classList.add("hidden");
-        document.getElementById("challengeSection").classList.remove("hidden");
-      } else {
-        alert("Email atau password salah!");
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Registrasi
+    window.register = async () => {
+      const nama = document.getElementById("regNama").value;
+      const email = document.getElementById("regEmail").value;
+      const pass = document.getElementById("regPass").value;
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+        const user = userCredential.user;
+        await setDoc(doc(db, "users", user.uid), { nama, email });
+        localStorage.setItem("userEmail", email);
+        alert("✅ Registrasi sukses! Silakan pilih paket.");
+        showPaketSection();
+      } catch (err) {
+        if (err.code === "auth/email-already-in-use") {
+          alert("⚠️ Email sudah terdaftar. Silakan masuk dengan form login.");
+        } else if (err.code === "auth/invalid-email") {
+          alert("⚠️ Format email tidak valid.");
+        } else if (err.code === "auth/weak-password") {
+          alert("⚠️ Password terlalu lemah (min. 6 karakter).");
+        } else {
+          alert("⚠️ Terjadi kesalahan. Coba lagi.");
+        }
       }
+    };
+
+    // Login
+    window.login = async () => {
+      const email = document.getElementById("loginEmail").value;
+      const pass = document.getElementById("loginPass").value;
+      try {
+        await signInWithEmailAndPassword(auth, email, pass);
+        localStorage.setItem("userEmail", email);
+        alert("✅ Login sukses!");
+        showPaketSection();
+      } catch (err) {
+        if (err.code === "auth/user-not-found") {
+          alert("⚠️ Akun tidak ditemukan. Silakan registrasi dulu.");
+        } else if (err.code === "auth/wrong-password") {
+          alert("⚠️ Password salah.");
+        } else {
+          alert("⚠️ Gagal login. Coba lagi.");
+        }
+      }
+    };
+
+    // Tampilkan paket challenge
+    function showPaketSection() {
+      document.getElementById("authSection").classList.add("hidden");
+      document.getElementById("paketSection").classList.remove("hidden");
     }
 
-    window.onload = () => {
-      const loggedIn = localStorage.getItem("loggedIn");
-      if (loggedIn === "true") {
-        document.getElementById("regForm").classList.add("hidden");
-        document.getElementById("loginForm").classList.add("hidden");
-        document.getElementById("challengeSection").classList.remove("hidden");
-      }
+    // Simpan paket yang dipilih dan pindah ke halaman pembayaran
+    window.goPay = (target, paket) => {
+      localStorage.setItem("paketDipilih", paket);
+      window.location.href = target;
     };
   </script>
 </body>
