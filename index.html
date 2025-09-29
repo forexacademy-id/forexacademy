@@ -6,54 +6,49 @@
   <title>Forex Academy</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-900 text-slate-100">
-  <div class="max-w-lg mx-auto p-6">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center">
+  <div class="w-full max-w-md bg-slate-900/60 p-6 rounded-xl shadow-xl">
+    <h1 class="text-2xl font-bold text-center mb-4">Forex Academy</h1>
+    <p class="text-center text-slate-400 mb-6">Prop Firm Termurah di Indonesia</p>
 
-    <!-- Bagian Registrasi & Login -->
-    <div id="authSection">
-      <!-- Form Registrasi -->
-      <form id="regForm" onsubmit="event.preventDefault(); registerUser();" class="space-y-4">
-        <h1 class="text-2xl font-bold text-center">Registrasi</h1>
-        <input type="text" name="nama" placeholder="Nama Lengkap" required class="w-full p-2 rounded bg-slate-800"/>
-        <input type="text" name="hp" placeholder="Nomor HP" required class="w-full p-2 rounded bg-slate-800"/>
-        <input type="email" name="email" placeholder="Email" required class="w-full p-2 rounded bg-slate-800"/>
-        <input type="password" name="password" placeholder="Password" required class="w-full p-2 rounded bg-slate-800"/>
-        <button type="submit" class="w-full py-2 bg-green-600 rounded">Daftar</button>
-        <p class="text-sm text-center">Sudah punya akun? <a href="#" onclick="showLogin()" class="text-indigo-400">Masuk di sini</a></p>
-      </form>
+    <!-- Form Registrasi -->
+    <form id="regForm" onsubmit="event.preventDefault(); registerUser();" class="space-y-3">
+      <input type="text" name="nama" placeholder="Nama Lengkap" required class="w-full p-2 rounded bg-slate-800"/>
+      <input type="text" name="hp" placeholder="Nomor HP" required class="w-full p-2 rounded bg-slate-800"/>
+      <input type="email" name="email" placeholder="Email" required class="w-full p-2 rounded bg-slate-800"/>
+      <input type="password" name="password" placeholder="Password" required class="w-full p-2 rounded bg-slate-800"/>
+      <button type="submit" class="w-full bg-green-600 py-2 rounded font-semibold">Daftar</button>
+      <p class="text-sm text-center">Sudah punya akun? 
+        <a href="#" onclick="showLogin()" class="text-indigo-400">Masuk di sini</a>
+      </p>
+    </form>
 
-      <!-- Form Login -->
-      <form id="loginForm" onsubmit="event.preventDefault(); loginUser();" class="space-y-4 hidden">
-        <h1 class="text-2xl font-bold text-center">Login</h1>
-        <input type="email" name="email" placeholder="Email" required class="w-full p-2 rounded bg-slate-800"/>
-        <input type="password" name="password" placeholder="Password" required class="w-full p-2 rounded bg-slate-800"/>
-        <button type="submit" class="w-full py-2 bg-indigo-600 rounded">Masuk</button>
-        <p class="text-sm text-center">Belum punya akun? <a href="#" onclick="showRegister()" class="text-indigo-400">Daftar di sini</a></p>
-      </form>
-    </div>
+    <!-- Form Login -->
+    <form id="loginForm" onsubmit="event.preventDefault(); loginUser();" class="space-y-3 hidden">
+      <input type="email" name="email" placeholder="Email" required class="w-full p-2 rounded bg-slate-800"/>
+      <input type="password" name="password" placeholder="Password" required class="w-full p-2 rounded bg-slate-800"/>
+      <button type="submit" class="w-full bg-blue-600 py-2 rounded font-semibold">Masuk</button>
+      <p class="text-sm text-center">Belum punya akun? 
+        <a href="#" onclick="showRegister()" class="text-indigo-400">Daftar di sini</a>
+      </p>
+    </form>
 
-    <!-- Bagian Challenge -->
-    <div id="challengeSection" class="hidden mt-8">
-      <h2 class="text-2xl font-bold text-center">Forex Academy</h2>
-      <p class="text-center text-slate-300 mb-4">Prop Firm Termurah di Indonesia</p>
-
-      <div class="bg-slate-800 p-4 rounded-md">
-        <h3 class="font-semibold mb-2">📋 Aturan Challenge</h3>
-        <ul class="list-disc ml-5 text-slate-300">
-          <li>Drawdown Harian Maksimal: 6%</li>
-          <li>Drawdown Bulanan Maksimal: 10%</li>
-          <li>Target Profit Bulanan: 9%</li>
-          <li>Profit Split: 90% Trader / 10% Prop Firm</li>
-        </ul>
-      </div>
-
-      <div class="mt-6 space-y-3">
-        <button onclick="pilihPaket('pay-10.html','$10 (Akun $1,000)','Rp160.000')" class="w-full py-3 bg-green-600 rounded font-bold">Rp160.000 — Paket $10</button>
-        <button onclick="pilihPaket('pay-20.html','$20 (Akun $2,000)','Rp320.000')" class="w-full py-3 bg-blue-600 rounded font-bold">Rp320.000 — Paket $20</button>
-        <button onclick="pilihPaket('pay-30.html','$30 (Akun $3,000)','Rp480.000')" class="w-full py-3 bg-purple-600 rounded font-bold">Rp480.000 — Paket $30</button>
+    <!-- Pilih Paket -->
+    <div id="challengeSection" class="hidden mt-6">
+      <h2 class="font-bold text-lg mb-3">📋 Aturan Challenge</h2>
+      <ul class="text-slate-300 mb-4 list-disc ml-5">
+        <li>Drawdown Harian Maksimal: 6%</li>
+        <li>Drawdown Bulanan Maksimal: 10%</li>
+        <li>Target Profit Bulanan: 9%</li>
+        <li>Profit Split: 90% Trader / 10% Prop Firm</li>
+      </ul>
+      <h2 class="font-bold text-lg mb-2">Pilih Paket Challenge</h2>
+      <div class="space-y-2">
+        <a href="pay-10.html" class="block text-center bg-green-600 py-2 rounded">Rp160.000 — Paket $10</a>
+        <a href="pay-20.html" class="block text-center bg-blue-600 py-2 rounded">Rp320.000 — Paket $20</a>
+        <a href="pay-30.html" class="block text-center bg-purple-600 py-2 rounded">Rp480.000 — Paket $30</a>
       </div>
     </div>
-
   </div>
 
   <script>
@@ -88,42 +83,24 @@
       const saved = JSON.parse(localStorage.getItem("forexUser") || "{}");
 
       if (saved.email === data.get("email") && saved.password === data.get("password")) {
-        alert("Login sukses!");
         localStorage.setItem("loggedIn", "true");
-        document.getElementById("authSection").classList.add("hidden");
+        document.getElementById("regForm").classList.add("hidden");
+        document.getElementById("loginForm").classList.add("hidden");
         document.getElementById("challengeSection").classList.remove("hidden");
       } else {
         alert("Email atau password salah!");
       }
     }
 
-    function pilihPaket(page, paket, harga) {
-      if (localStorage.getItem("loggedIn") !== "true") {
-        alert("Silakan login terlebih dahulu!");
-        return;
-      }
-      localStorage.setItem("paketDipilih", JSON.stringify({paket, harga}));
-      window.location.href = page;
-    }
-
-    // auto cek login
+    // Auto cek login
     window.onload = () => {
       const user = JSON.parse(localStorage.getItem("forexUser") || "{}");
       const loggedIn = localStorage.getItem("loggedIn");
 
-      if (!user.email) {
-        // belum daftar
-        document.getElementById("authSection").classList.remove("hidden");
-        document.getElementById("challengeSection").classList.add("hidden");
-      } else if (loggedIn === "true") {
-        // sudah login
-        document.getElementById("authSection").classList.add("hidden");
+      if (loggedIn === "true") {
+        document.getElementById("regForm").classList.add("hidden");
+        document.getElementById("loginForm").classList.add("hidden");
         document.getElementById("challengeSection").classList.remove("hidden");
-      } else {
-        // sudah daftar tapi belum login
-        document.getElementById("authSection").classList.remove("hidden");
-        document.getElementById("challengeSection").classList.add("hidden");
-        showLogin();
       }
     };
   </script>
