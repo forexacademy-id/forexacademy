@@ -7,38 +7,39 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100">
-  <div class="max-w-3xl mx-auto p-6">
-    <h1 class="text-3xl font-bold text-center">Forex Academy</h1>
-    <p class="text-center text-slate-400 mt-2">Prop Firm Termurah di Indonesia</p>
+  <div class="max-w-lg mx-auto p-6">
 
-    <!-- Container Registrasi/Login -->
-    <div id="authSection" class="bg-slate-800 p-6 rounded-xl mt-6">
-      <h2 class="text-xl font-bold mb-3">Registrasi Akun Baru</h2>
-      <form id="regForm" class="space-y-3">
-        <input type="text" name="nama" placeholder="Nama Lengkap" required class="w-full p-2 rounded text-black"/>
-        <input type="text" name="hp" placeholder="Nomor HP" required class="w-full p-2 rounded text-black"/>
-        <input type="email" name="email" placeholder="Email" required class="w-full p-2 rounded text-black"/>
-        <input type="password" name="password" placeholder="Password" required class="w-full p-2 rounded text-black"/>
-        <button type="button" onclick="registerUser()" class="w-full bg-green-600 py-2 rounded font-semibold">Daftar</button>
+    <!-- Bagian Registrasi & Login -->
+    <div id="authSection">
+      <!-- Form Registrasi -->
+      <form id="regForm" onsubmit="event.preventDefault(); registerUser();" class="space-y-4">
+        <h1 class="text-2xl font-bold text-center">Registrasi</h1>
+        <input type="text" name="nama" placeholder="Nama Lengkap" required class="w-full p-2 rounded bg-slate-800"/>
+        <input type="text" name="hp" placeholder="Nomor HP" required class="w-full p-2 rounded bg-slate-800"/>
+        <input type="email" name="email" placeholder="Email" required class="w-full p-2 rounded bg-slate-800"/>
+        <input type="password" name="password" placeholder="Password" required class="w-full p-2 rounded bg-slate-800"/>
+        <button type="submit" class="w-full py-2 bg-green-600 rounded">Daftar</button>
+        <p class="text-sm text-center">Sudah punya akun? <a href="#" onclick="showLogin()" class="text-indigo-400">Masuk di sini</a></p>
       </form>
 
-      <p class="mt-4 text-center text-slate-300">Sudah punya akun?
-        <button onclick="showLogin()" class="text-blue-400 underline">Masuk di sini</button>
-      </p>
-
-      <!-- Login form (disembunyikan dulu) -->
-      <form id="loginForm" class="space-y-3 hidden mt-4">
-        <input type="email" name="email" placeholder="Email" required class="w-full p-2 rounded text-black"/>
-        <input type="password" name="password" placeholder="Password" required class="w-full p-2 rounded text-black"/>
-        <button type="button" onclick="loginUser()" class="w-full bg-blue-600 py-2 rounded font-semibold">Masuk</button>
+      <!-- Form Login -->
+      <form id="loginForm" onsubmit="event.preventDefault(); loginUser();" class="space-y-4 hidden">
+        <h1 class="text-2xl font-bold text-center">Login</h1>
+        <input type="email" name="email" placeholder="Email" required class="w-full p-2 rounded bg-slate-800"/>
+        <input type="password" name="password" placeholder="Password" required class="w-full p-2 rounded bg-slate-800"/>
+        <button type="submit" class="w-full py-2 bg-indigo-600 rounded">Masuk</button>
+        <p class="text-sm text-center">Belum punya akun? <a href="#" onclick="showRegister()" class="text-indigo-400">Daftar di sini</a></p>
       </form>
     </div>
 
-    <!-- Container Challenge (muncul setelah login) -->
-    <div id="challengeSection" class="hidden">
-      <div class="bg-slate-700 p-4 rounded mt-6">
-        <h2 class="font-semibold mb-2">📋 Aturan Challenge</h2>
-        <ul class="list-disc ml-5 space-y-1 text-slate-300">
+    <!-- Bagian Challenge -->
+    <div id="challengeSection" class="hidden mt-8">
+      <h2 class="text-2xl font-bold text-center">Forex Academy</h2>
+      <p class="text-center text-slate-300 mb-4">Prop Firm Termurah di Indonesia</p>
+
+      <div class="bg-slate-800 p-4 rounded-md">
+        <h3 class="font-semibold mb-2">📋 Aturan Challenge</h3>
+        <ul class="list-disc ml-5 text-slate-300">
           <li>Drawdown Harian Maksimal: 6%</li>
           <li>Drawdown Bulanan Maksimal: 10%</li>
           <li>Target Profit Bulanan: 9%</li>
@@ -46,66 +47,85 @@
         </ul>
       </div>
 
-      <div class="bg-slate-800 p-6 rounded-xl mt-6 text-center space-y-3">
-        <h2 class="text-xl font-bold">Pilih Paket Challenge</h2>
-        <button onclick="pilihPaket('pay-10.html','$10 (Akun $1,000)','Rp160.000')" class="w-full bg-green-600 py-2 rounded">Rp160.000 — Paket $10</button>
-        <button onclick="pilihPaket('pay-20.html','$20 (Akun $2,000)','Rp320.000')" class="w-full bg-blue-600 py-2 rounded">Rp320.000 — Paket $20</button>
-        <button onclick="pilihPaket('pay-30.html','$30 (Akun $3,000)','Rp480.000')" class="w-full bg-purple-600 py-2 rounded">Rp480.000 — Paket $30</button>
+      <div class="mt-6 space-y-3">
+        <button onclick="pilihPaket('pay-10.html','$10 (Akun $1,000)','Rp160.000')" class="w-full py-3 bg-green-600 rounded font-bold">Rp160.000 — Paket $10</button>
+        <button onclick="pilihPaket('pay-20.html','$20 (Akun $2,000)','Rp320.000')" class="w-full py-3 bg-blue-600 rounded font-bold">Rp320.000 — Paket $20</button>
+        <button onclick="pilihPaket('pay-30.html','$30 (Akun $3,000)','Rp480.000')" class="w-full py-3 bg-purple-600 rounded font-bold">Rp480.000 — Paket $30</button>
       </div>
     </div>
+
   </div>
 
-<script>
-function showLogin() {
-  document.getElementById("regForm").classList.add("hidden");
-  document.getElementById("loginForm").classList.remove("hidden");
-}
+  <script>
+    function showLogin() {
+      document.getElementById("regForm").classList.add("hidden");
+      document.getElementById("loginForm").classList.remove("hidden");
+    }
 
-function registerUser() {
-  const form = document.getElementById("regForm");
-  const data = new FormData(form);
-  const user = {
-    nama: data.get("nama"),
-    hp: data.get("hp"),
-    email: data.get("email"),
-    password: data.get("password")
-  };
-  localStorage.setItem("forexUser", JSON.stringify(user));
-  alert("Registrasi berhasil, silakan login!");
-  showLogin();
-}
+    function showRegister() {
+      document.getElementById("loginForm").classList.add("hidden");
+      document.getElementById("regForm").classList.remove("hidden");
+    }
 
-function loginUser() {
-  const form = document.getElementById("loginForm");
-  const data = new FormData(form);
-  const saved = JSON.parse(localStorage.getItem("forexUser") || "{}");
+    function registerUser() {
+      const form = document.getElementById("regForm");
+      const data = new FormData(form);
+      const user = {
+        nama: data.get("nama"),
+        hp: data.get("hp"),
+        email: data.get("email"),
+        password: data.get("password")
+      };
+      localStorage.setItem("forexUser", JSON.stringify(user));
+      localStorage.setItem("loggedIn", "false");
+      alert("Registrasi berhasil, silakan login!");
+      showLogin();
+    }
 
-  if (saved.email === data.get("email") && saved.password === data.get("password")) {
-    alert("Login sukses!");
-    localStorage.setItem("loggedIn", "true");
-    document.getElementById("authSection").classList.add("hidden");
-    document.getElementById("challengeSection").classList.remove("hidden");
-  } else {
-    alert("Email atau password salah!");
-  }
-}
+    function loginUser() {
+      const form = document.getElementById("loginForm");
+      const data = new FormData(form);
+      const saved = JSON.parse(localStorage.getItem("forexUser") || "{}");
 
-function pilihPaket(page, paket, harga) {
-  if (localStorage.getItem("loggedIn") !== "true") {
-    alert("Silakan login terlebih dahulu!");
-    return;
-  }
-  localStorage.setItem("paketDipilih", JSON.stringify({paket, harga}));
-  window.location.href = page;
-}
+      if (saved.email === data.get("email") && saved.password === data.get("password")) {
+        alert("Login sukses!");
+        localStorage.setItem("loggedIn", "true");
+        document.getElementById("authSection").classList.add("hidden");
+        document.getElementById("challengeSection").classList.remove("hidden");
+      } else {
+        alert("Email atau password salah!");
+      }
+    }
 
-// auto cek login saat reload
-window.onload = () => {
-  if (localStorage.getItem("loggedIn") === "true") {
-    document.getElementById("authSection").classList.add("hidden");
-    document.getElementById("challengeSection").classList.remove("hidden");
-  }
-};
-</script>
+    function pilihPaket(page, paket, harga) {
+      if (localStorage.getItem("loggedIn") !== "true") {
+        alert("Silakan login terlebih dahulu!");
+        return;
+      }
+      localStorage.setItem("paketDipilih", JSON.stringify({paket, harga}));
+      window.location.href = page;
+    }
+
+    // auto cek login
+    window.onload = () => {
+      const user = JSON.parse(localStorage.getItem("forexUser") || "{}");
+      const loggedIn = localStorage.getItem("loggedIn");
+
+      if (!user.email) {
+        // belum daftar
+        document.getElementById("authSection").classList.remove("hidden");
+        document.getElementById("challengeSection").classList.add("hidden");
+      } else if (loggedIn === "true") {
+        // sudah login
+        document.getElementById("authSection").classList.add("hidden");
+        document.getElementById("challengeSection").classList.remove("hidden");
+      } else {
+        // sudah daftar tapi belum login
+        document.getElementById("authSection").classList.remove("hidden");
+        document.getElementById("challengeSection").classList.add("hidden");
+        showLogin();
+      }
+    };
+  </script>
 </body>
 </html>
