@@ -11,7 +11,7 @@
     <h1 class="text-2xl font-bold text-center mb-4">Forex Academy</h1>
     <p class="text-center text-slate-400 mb-6">Prop Firm Termurah di Indonesia</p>
 
-    <!-- Form Registrasi -->
+    <!-- Registrasi -->
     <form id="regForm" onsubmit="event.preventDefault(); registerUser();" class="space-y-3">
       <input type="text" name="nama" placeholder="Nama Lengkap" required class="w-full p-2 rounded bg-slate-800"/>
       <input type="text" name="hp" placeholder="Nomor HP" required class="w-full p-2 rounded bg-slate-800"/>
@@ -23,7 +23,7 @@
       </p>
     </form>
 
-    <!-- Form Login -->
+    <!-- Login -->
     <form id="loginForm" onsubmit="event.preventDefault(); loginUser();" class="space-y-3 hidden">
       <input type="email" name="email" placeholder="Email" required class="w-full p-2 rounded bg-slate-800"/>
       <input type="password" name="password" placeholder="Password" required class="w-full p-2 rounded bg-slate-800"/>
@@ -33,7 +33,7 @@
       </p>
     </form>
 
-    <!-- Pilih Paket -->
+    <!-- Paket Challenge -->
     <div id="challengeSection" class="hidden mt-6">
       <h2 class="font-bold text-lg mb-3">📋 Aturan Challenge</h2>
       <ul class="text-slate-300 mb-4 list-disc ml-5">
@@ -92,11 +92,8 @@
       }
     }
 
-    // Auto cek login
     window.onload = () => {
-      const user = JSON.parse(localStorage.getItem("forexUser") || "{}");
       const loggedIn = localStorage.getItem("loggedIn");
-
       if (loggedIn === "true") {
         document.getElementById("regForm").classList.add("hidden");
         document.getElementById("loginForm").classList.add("hidden");
