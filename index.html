@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-b from-slate-900 to-slate-800 text-slate-100">
-
+  <!-- Hero Section -->
   <section class="text-center py-12 px-6 bg-slate-900/50">
     <h1 class="text-3xl md:text-4xl font-bold">Forex Academy</h1>
     <p class="mt-3 text-lg text-slate-300">Prop Firm Termurah di Indonesia</p>
@@ -17,126 +17,98 @@
     </p>
   </section>
 
-  <section class="max-w-4xl mx-auto p-6 text-center" id="aturanSection">
-    <h2 class="text-2xl font-bold">📋 Aturan Challenge</h2>
-    <ul class="list-disc ml-6 text-slate-300 text-sm space-y-1 text-left mt-4">
-      <li>Drawdown Harian Maksimal: <strong>6%</strong></li>
-      <li>Drawdown Bulanan Maksimal: <strong>10%</strong></li>
-      <li>Target Profit Bulanan: <strong>9%</strong></li>
-      <li>Pembagian Profit: <strong>90% Trader</strong> / <strong>10% Prop Firm</strong></li>
-    </ul>
-  </section>
-
-  <section class="max-w-3xl mx-auto p-6" id="authSection">
-    <h2 class="text-2xl font-bold text-center">Form Registrasi / Masuk</h2>
-    <div class="bg-slate-900/40 p-4 rounded-lg shadow mt-6">
-      <h3 class="text-lg font-semibold text-center">Registrasi Akun Baru</h3>
-      <input id="regNama" type="text" placeholder="Nama Lengkap" class="w-full mt-3 p-2 rounded-md text-black"/>
-      <input id="regEmail" type="email" placeholder="Email" class="w-full mt-3 p-2 rounded-md text-black"/>
-      <input id="regPass" type="password" placeholder="Password" class="w-full mt-3 p-2 rounded-md text-black"/>
-      <button onclick="register()" class="w-full mt-4 px-6 py-3 bg-green-600 rounded-md font-semibold">Daftar</button>
-    </div>
-
-    <div class="bg-slate-900/40 p-4 rounded-lg shadow mt-6">
-      <h3 class="text-lg font-semibold text-center">Masuk Akun</h3>
-      <input id="loginEmail" type="email" placeholder="Email" class="w-full mt-3 p-2 rounded-md text-black"/>
-      <input id="loginPass" type="password" placeholder="Password" class="w-full mt-3 p-2 rounded-md text-black"/>
-      <button onclick="login()" class="w-full mt-4 px-6 py-3 bg-blue-600 rounded-md font-semibold">Masuk</button>
+  <!-- Tentang -->
+  <section class="max-w-4xl mx-auto p-6 text-center">
+    <h2 class="text-2xl font-bold">Kenapa Memilih Forex Academy?</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-3 text-left">
+      <div class="bg-slate-900/40 p-4 rounded-lg shadow">
+        <h3 class="font-semibold text-lg">💰 Biaya Terjangkau</h3>
+        <p class="text-slate-300 text-sm mt-2">Mulai hanya dari Rp160.000 untuk challenge akun $1,000.</p>
+      </div>
+      <div class="bg-slate-900/40 p-4 rounded-lg shadow">
+        <h3 class="font-semibold text-lg">📈 Profit Split 90/10</h3>
+        <p class="text-slate-300 text-sm mt-2">Trader menikmati 90% profit, prop firm hanya 10%.</p>
+      </div>
+      <div class="bg-slate-900/40 p-4 rounded-lg shadow">
+        <h3 class="font-semibold text-lg">🎯 Aturan Simple</h3>
+        <p class="text-slate-300 text-sm mt-2">Drawdown harian 6%, bulanan 10%, target profit 9%.</p>
+      </div>
     </div>
   </section>
 
-  <section class="max-w-3xl mx-auto p-6 hidden" id="paketSection">
-    <h2 class="text-2xl font-bold text-center mb-6">Pilih Paket Challenge</h2>
-    <div class="flex flex-col gap-4">
-      <button onclick="goPay('pay-10.html', 'Paket $10 (Rp160.000)')" class="px-6 py-3 bg-green-600 rounded-md font-semibold">
-        Rp 160.000 — Paket $10 (Akun $1,000)
-      </button>
-      <button onclick="goPay('pay-20.html', 'Paket $20 (Rp320.000)')" class="px-6 py-3 bg-blue-600 rounded-md font-semibold">
-        Rp 320.000 — Paket $20 (Akun $2,000)
-      </button>
-      <button onclick="goPay('pay-30.html', 'Paket $30 (Rp480.000)')" class="px-6 py-3 bg-purple-600 rounded-md font-semibold">
-        Rp 480.000 — Paket $30 (Akun $3,000)
-      </button>
-    </div>
-  </section>
+  <!-- Form Registrasi -->
+  <div class="max-w-3xl mx-auto p-6">
+    <h2 class="text-2xl font-bold text-center">Form Registrasi</h2>
+    <form id="regForm" class="mt-6 space-y-4">
+      <div>
+        <label class="block mb-1">Nama Lengkap</label>
+        <input type="text" name="nama" required class="w-full p-2 rounded-md text-black"/>
+      </div>
+      <div>
+        <label class="block mb-1">Umur</label>
+        <input type="number" name="umur" required class="w-full p-2 rounded-md text-black"/>
+      </div>
+      <div>
+        <label class="block mb-1">Nomor HP</label>
+        <input type="text" name="hp" required class="w-full p-2 rounded-md text-black"/>
+      </div>
+      <div>
+        <label class="block mb-1">Email</label>
+        <input type="email" name="email" required class="w-full p-2 rounded-md text-black"/>
+      </div>
+      <div>
+        <label class="block mb-1">No. Rekening (Dana)</label>
+        <input type="text" name="rekening" required class="w-full p-2 rounded-md text-black"/>
+      </div>
 
+      <!-- Aturan Challenge -->
+      <div class="bg-slate-800 p-4 rounded-md mt-6">
+        <h2 class="text-lg font-semibold mb-2 text-center">📋 Aturan Challenge</h2>
+        <ul class="list-disc ml-5 text-slate-300 text-sm space-y-1">
+          <li>Drawdown Harian Maksimal: <strong>6%</strong></li>
+          <li>Drawdown Bulanan Maksimal: <strong>10%</strong></li>
+          <li>Target Profit Bulanan: <strong>9%</strong></li>
+          <li>Pembagian Profit: <strong>90% Trader</strong> / <strong>10% Prop Firm</strong></li>
+        </ul>
+      </div>
+
+      <p class="mt-6 text-center text-slate-300 font-semibold">Pilih Paket Challenge</p>
+      <div class="flex flex-col gap-3 mt-2">
+        <button type="button" onclick="goPay('pay-10.html','$10 (Akun $1,000)')"
+          class="px-6 py-3 bg-green-500 rounded-md font-semibold">
+          Rp 160.000 — Paket $10 (Akun $1,000)
+        </button>
+        <button type="button" onclick="goPay('pay-20.html','$20 (Akun $2,000)')"
+          class="px-6 py-3 bg-blue-500 rounded-md font-semibold">
+          Rp 320.000 — Paket $20 (Akun $2,000)
+        </button>
+        <button type="button" onclick="goPay('pay-30.html','$30 (Akun $3,000)')"
+          class="px-6 py-3 bg-purple-500 rounded-md font-semibold">
+          Rp 480.000 — Paket $30 (Akun $3,000)
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Footer -->
   <footer class="bg-slate-900/70 text-center py-4 mt-8 text-slate-400 text-sm">
     © 2025 Forex Academy — Prop Firm Termurah di Indonesia
   </footer>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword }
-      from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
-    import { getFirestore, doc, setDoc }
-      from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+  <script>
+    function goPay(target, paket) {
+      const form = document.getElementById("regForm");
+      const data = new FormData(form);
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyDuaOPhp6EHId3dUt6Rdt62HOMZXawhbFE",
-      authDomain: "forex-academy-8a655.firebaseapp.com",
-      projectId: "forex-academy-8a655",
-      storageBucket: "forex-academy-8a655.appspot.com",
-      messagingSenderId: "1073361426477",
-      appId: "1:1073361426477:web:daec7a329733a1e1e5c0a4",
-      measurementId: "G-XS9XRHTFKY"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-
-    window.register = async () => {
-      const nama = document.getElementById("regNama").value;
-      const email = document.getElementById("regEmail").value;
-      const pass = document.getElementById("regPass").value;
-      try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
-        const user = userCredential.user;
-        await setDoc(doc(db, "users", user.uid), { nama, email });
-        localStorage.setItem("userEmail", email);
-        alert("✅ Registrasi sukses! Silakan pilih paket.");
-        showPaketSection();
-      } catch (err) {
-        if (err.code === "auth/email-already-in-use") {
-          alert("⚠️ Email sudah terdaftar. Silakan masuk dengan form login.");
-        } else if (err.code === "auth/invalid-email") {
-          alert("⚠️ Format email tidak valid.");
-        } else if (err.code === "auth/weak-password") {
-          alert("⚠️ Password terlalu lemah (min. 6 karakter).");
-        } else {
-          alert("⚠️ Terjadi kesalahan. Coba lagi.");
-        }
-      }
-    };
-
-    window.login = async () => {
-      const email = document.getElementById("loginEmail").value;
-      const pass = document.getElementById("loginPass").value;
-      try {
-        await signInWithEmailAndPassword(auth, email, pass);
-        localStorage.setItem("userEmail", email);
-        alert("✅ Login sukses!");
-        showPaketSection();
-      } catch (err) {
-        if (err.code === "auth/user-not-found") {
-          alert("⚠️ Akun tidak ditemukan. Silakan registrasi dulu.");
-        } else if (err.code === "auth/wrong-password") {
-          alert("⚠️ Password salah.");
-        } else {
-          alert("⚠️ Gagal login. Coba lagi.");
-        }
-      }
-    };
-
-    function showPaketSection() {
-      document.getElementById("authSection").classList.add("hidden");
-      document.getElementById("paketSection").classList.remove("hidden");
-    }
-
-    window.goPay = (target, paket) => {
+      // Simpan data user ke localStorage
+      localStorage.setItem("userEmail", data.get("email"));
+      localStorage.setItem("userNama", data.get("nama"));
+      localStorage.setItem("userHp", data.get("hp"));
       localStorage.setItem("paketDipilih", paket);
+
+      // Redirect ke halaman pembayaran
       window.location.href = target;
-    };
+    }
   </script>
 </body>
 </html>
