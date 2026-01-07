@@ -6,7 +6,7 @@ import { doc, getDoc } from
 
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
-    window.location.replace("login.html");
+    window.location.replace("/forexacademy/login.html");
     return;
   }
 
@@ -14,23 +14,14 @@ onAuthStateChanged(auth, async (user) => {
     const snap = await getDoc(doc(db, "users", user.uid));
     if (!snap.exists()) return;
 
-    const data = snap.data();
-    const nama = data.nama || "User";
+    const nama = snap.data().nama || "User";
 
-    const namaUser = document.getElementById("namaUser");
-    if (namaUser) namaUser.innerText = nama;
-
-    const menuNama = document.getElementById("menuNama");
-    const menuEmail = document.getElementById("menuEmail");
-    const avatar = document.getElementById("avatar");
-
-    if (menuNama) menuNama.innerText = nama;
-    if (menuEmail) menuEmail.innerText = data.email || user.email;
-    if (avatar) avatar.innerText = nama.charAt(0).toUpperCase();
+    document.getElementById("menuNama")?.innerText = nama;
+    document.getElementById("menuEmail")?.innerText = user.email;
+    document.getElementById("avatar")?.innerText =
+      nama.charAt(0).toUpperCase();
 
   } catch (err) {
-    console.error("Auth protect error:", err);
+    console.error(err);
   }
 });
-
-
