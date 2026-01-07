@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================
   onAuthStateChanged(auth, (user) => {
     if (!user) {
-      window.location.replace("../login.html");
+      window.location.replace("login.html");
       return;
     }
 
@@ -51,8 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (logoutBtn) {
     logoutBtn.addEventListener("click", async () => {
       await signOut(auth);
-      window.location.replace("../login.html");
+      window.location.replace("login.html");
     });
   }
 
 });
+
