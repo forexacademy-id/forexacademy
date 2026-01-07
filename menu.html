@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Dashboard — Forex Academy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s ease-out both;
+}
+
+.balance-card {
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.balance-card.active {
+  transform: translateY(-6px) scale(1.01);
+  border-color: #84cc16; /* lime-500 */
+  box-shadow:
+    0 12px 25px rgba(132, 204, 22, 0.35),
+    0 0 0 3px rgba(132, 204, 22, 0.15);
+}
+</style>
+
+</head>
+
+<body class="bg-[#efffd6] min-h-screen">
+
+<!-- HEADER -->
+<header class="bg-white shadow">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+
+    <div class="flex items-center gap-2">
+      <img src="logo2.png" class="h-8">
+      <span class="font-bold text-lime-600">Forex Academy</span>
+    </div>
+
+    <!-- MENU -->
+    <div class="relative">
+      <button id="menuBtn"
+        class="w-10 h-10 flex flex-col justify-center items-center
+        border border-lime-400 rounded-xl hover:bg-lime-100">
+        <span class="w-6 h-0.5 bg-lime-600 mb-1"></span>
+        <span class="w-6 h-0.5 bg-lime-600 mb-1"></span>
+        <span class="w-6 h-0.5 bg-lime-600"></span>
+      </button>
+
+      <div id="menuDropdown"
+        class="hidden absolute right-0 mt-3 w-64 bg-white
+        border border-lime-200 rounded-xl shadow-lg z-50">
+
+        <div class="p-4 border-b flex gap-3 items-center">
+          <div id="avatar"
+            class="w-10 h-10 rounded-full bg-lime-500
+            text-white flex items-center justify-center font-bold">U</div>
+          <div>
+            <p id="menuNama" class="font-semibold">User</p>
+            <p id="menuEmail" class="text-sm text-gray-500">email@gmail.com</p>
+          </div>
+        </div>
+
+        <button id="logoutBtn"
+          class="w-full text-left px-4 py-3 text-red-600 hover:bg-red-50">
+          Logout
+        </button>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- CONTENT -->
+<main class="max-w-6xl mx-auto px-6 py-10">
+  <a href="../index.html"
+  class="inline-flex items-center gap-2 mb-4
+  text-sm font-medium text-lime-600
+  hover:text-lime-700 transition">
+
+  <svg xmlns="http://www.w3.org/2000/svg"
+    class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+    stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round"
+      stroke-width="2" d="M15 19l-7-7 7-7"/>
+  </svg>
+
+  Kembali ke Halaman Utama
+</a>
+
+<p class="text-slate-600 mb-1 animate-fade-up" style="animation-delay:0.1s">
+  Halo, <span id="namaUser" class="font-semibold text-slate-800">User</span>
+</p>
+
+  <h1 class="text-3xl font-bold mb-2">Pilih Balance</h1>
+  <p class="text-gray-600 mb-8">
+    Mulai challenge trading sesuai target dan modal virtual pilihanmu.
+  </p>
+
+  <!-- PRODUCT GRID -->
+  <div id="productGrid"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  </div>
+
+</main>
+
+<footer class="text-center py-6 text-sm text-gray-500">
+  © 2026 Forex Academy
+</footer>
+
+<!-- SCRIPT PRODUK -->
+<script>
+const products = [
+  { balance: 1000, price: 160000 },
+  { balance: 2000, price: 320000 },
+  { balance: 3000, price: 480000 },
+  { balance: 5000, price: 700000, best: true },
+  { balance: 10000, price: 1200000 },
+  { balance: 25000, price: 2000000 },
+];
+
+const grid = document.getElementById("productGrid");
+
+products.forEach((p, i) => {
+  grid.innerHTML += `
+    <div
+      class="bg-white rounded-2xl shadow p-6
+      balance-card animate-fade-up
+      ${p.best ? "border-2 border-lime-500" : "border border-transparent"}"
+      style="animation-delay:${i * 0.08}s"
+      onclick="selectCard(this)">
+
+      <h2 class="text-xl font-bold">$${p.balance.toLocaleString()}</h2>
+      <p class="text-gray-500 mb-3">Balance</p>
+
+      <div class="text-2xl font-bold text-lime-600 mb-6">
+        Rp${p.price.toLocaleString("id-ID")}
+      </div>
+
+      <button
+        onclick="event.stopPropagation(); goPay(${p.balance},${p.price})"
+        class="w-full py-3 rounded-xl font-semibold text-white
+        transition transform hover:scale-[1.02] active:scale-95
+        ${p.best ? "bg-lime-600" : "bg-lime-500 hover:bg-lime-600"}">
+        ${p.best ? "Best Value" : "Pilih Produk"}
+      </button>
+    </div>
+  `;
+});
+
+function goPay(balance, price) {
+  location.href = `payment.html?balance=${balance}&price=${price}`;
+}
+</script>
+
+<script>
+function selectCard(card) {
+  document
+    .querySelectorAll(".balance-card")
+    .forEach(c => c.classList.remove("active"));
+
+  card.classList.add("active");
+}
+</script>
+
+
+<!-- FIREBASE -->
+<script type="module" src="../js/firebase.js"></script>
+
+<!-- AUTH PROTECT (ambil user + proteksi) -->
+<script type="module" src="../js/auth-protect.js"></script>
+
+<!-- MENU -->
+<script type="module" src="../js/menu.js"></script>
+
+</body>
+</html>
