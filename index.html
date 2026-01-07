@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Forex Academy - Prop Firm Termurah di Indonesia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+:root {
+  --lime-main: #b9ff51;
+  --lime-dark: #93ee14;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Card pricing */
+.pricing-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+.pricing-card:hover {
+  transform: translateY(-6px);
+}
+.pricing-card .price {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--lime-dark);
+}
+.pricing-card .badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--lime-dark);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* ================= MODERN UI POLISH ================= */
+
+/* Smooth overall */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Modern shadow system */
+.shadow-soft {
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.06),
+    0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Glass-like card */
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.9);
+}
+
+/* Smooth hover */
+.hover-lift {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.08);
+}
+
+/* Better text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.pricing-card {
+  border-radius: 1.5rem;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 32px rgba(0,0,0,.1);
+}
+
+/* ================= ATURAN CHALLENGE ================= */
+
+.rules-card {
+  border-radius: 1.75rem;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+.rules-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px dashed #d9f99d;
+}
+
+.rules-item:last-child {
+  border-bottom: none;
+}
+
+.rules-value {
+  background: #ecfccb;
+  color: #3f6212;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ===== GLOW LINE PRICING ===== */
+.pricing-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* glowing line */
+.pricing-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(147, 238, 20, 0.8),
+    transparent
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* glow muncul saat hover */
+.pricing-card:hover::before {
+  opacity: 1;
+}
+
+/* ===== BEST VALUE GLOW ===== */
+.pricing-card.border-2::before {
+  opacity: 1;
+  background: linear-gradient(
+    120deg,
+    rgba(147, 238, 20, 0.9),
+    rgba(185, 255, 81, 0.9),
+    rgba(147, 238, 20, 0.9)
+  );
+}
+</style>
+</head>
+
+<body class="bg-white text-slate-700">
+
+<!-- ================= NAVBAR ================= --><nav class="bg-white/90 backdrop-blur border-b border-lime-200 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+    <!-- Logo -->
+     <div class="flex items-center gap-2 font-bold text-lg sm:text-2xl text-lime-600">
+      <img src="logo.png" class="h-10 w-10 sm:h-12 sm:w-12 object-contain">
+      <span class="sm:inline">Forex Academy</span>
+    </div>
+
+    <!-- Right Menu -->
+     <div class="flex items-center gap-4">
+
+      <!-- Hamburger -->
+       <div class="relative">
+        <button id="menuBtn" class="flex flex-col justify-center items-center w-12 h-12 rounded-xl border border-lime-300 hover:bg-lime-100 transition">
+          <span class="w-6 h-0.5 bg-lime-600 mb-1"></span>
+          <span class="w-6 h-0.5 bg-lime-600 mb-1"></span>
+          <span class="w-6 h-0.5 bg-lime-600"></span>
+        </button>
+
+        <!-- Dropdown -->
+         <div id="menuDropdown" class="hidden absolute right-0 mt-4 w-64 bg-white rounded-2xl shadow-xl border border-lime-200 overflow-hidden">
+
+          <!-- AUTH BUTTONS -->
+<div class="p-4 space-y-3 border-b">
+  <a id="loginBtn"
+     href="login.html"
+     class="block text-center py-2 rounded-xl border border-lime-400 text-lime-700 font-semibold hover:bg-lime-50 transition">
+    Login
+  </a>
+
+  <a id="registerBtn"
+     href="register.html"
+     class="block text-center py-2 rounded-xl bg-lime-500 text-white font-semibold hover:bg-lime-600 transition shadow">
+    Register
+  </a>
+
+  <a id="dashboardBtn"
+     href="dashboard/menu.html"
+     class="hidden block text-center py-2 rounded-xl bg-lime-600 text-white font-semibold hover:bg-lime-700 transition shadow">
+    Dashboard
+  </a>
+
+  <button id="logoutBtn"
+     class="hidden w-full py-2 rounded-xl border border-red-400 text-red-600 font-semibold hover:bg-red-50 transition">
+    Logout
+  </button>
+</div>
+
+
+              <!-- MENU --> 
+               <a href="#aturanSection" class="block px-4 py-3 hover:bg-lime-50 font-medium text-slate-700">Tentang</a>
+
+               <!-- SOCIAL --> 
+                <div class="px-4 py-3 border-t text-sm text-slate-600">
+                  <p class="font-semibold mb-2">Media Sosial</p>
+                  <div class="flex flex-col gap-2">
+                    <a href="https://www.instagram.com/forexacademy_propfrim?igsh=NGw5cnZpMTM4aHZi" class="hover:text-lime-600">Instagram</a>
+                    <a href="https://www.tiktok.com/@propfrim_forexacademy?_r=1&_t=ZS-92ooy9FUPma" class="hover:text-lime-600">Tiktok</a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=propfrimforexacademy@gmail.com" target="_blank" class="hover:text-lime-600">Email</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </nav>
+
+<!-- ================= HERO ================= -->
+<section class="py-16 px-6 max-w-6xl mx-auto grid gap-10 md:grid-cols-2 items-center">
+  <div class="text-center md:text-left">
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4">Forex Academy</h1>
+    <p class="text-gray-600 mb-4">Prop Firm Termurah di Indonesia</p>
+    <p class="text-gray-600">
+      Mulai challenge dengan modal kecil dan profit split hingga <b>90%</b>
+    </p>
+  </div>
+  <img src="gambartrade.jpeg" class="max-w-xs sm:max-w-md mx-auto">
+</section>
+
+<!-- ================= CARA MEMULAI ================= -->
+<section class="relative py-16 px-6 bg-slate-50 overflow-hidden">
+
+  <div class="max-w-md mx-auto">
+
+    <!-- TITLE -->
+    <div class="border-one text-center mb-12">
+      <h1 class="text-2xl font-bold">Bagaimana Cara</h1>
+      <p class="text-base">Memulainya?</p>
+    </div>
+
+<div class="space-y-8">
+
+  <!-- STEP 0 -->
+  <div class="grid grid-cols-1 sm:grid-cols-[56px_1fr] items-center gap-4">
+    <div class="flex justify-center">
+      <div class="w-14 h-14 bg-lime-500 rounded-full flex items-center justify-center shadow-soft">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white"
+          fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M16 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="bg-white p-4 rounded-2xl border border-lime-200 shadow-soft hover-lift">
+      <p class="font-semibold text-slate-700 text-center sm:text-left">
+        Daftar akun propfirm terlebih dahulu
+      </p>
+    </div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="grid grid-cols-1 sm:grid-cols-[56px_1fr] items-center gap-4">
+    <div class="flex justify-center">
+      <div class="w-14 h-14 bg-lime-500 rounded-full flex items-center justify-center shadow-soft">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white"
+          fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M3 3l7 18 2-7 7-2L3 3z"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="bg-white p-4 rounded-2xl border border-lime-200 shadow-soft hover-lift">
+      <p class="font-semibold text-slate-700 text-center sm:text-left">
+        Pilih Modal Akun Anda
+      </p>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="grid grid-cols-1 sm:grid-cols-[56px_1fr] items-center gap-4">
+    <div class="flex justify-center">
+      <div class="w-14 h-14 bg-lime-500 rounded-full flex items-center justify-center shadow-soft">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white"
+          fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M5 13l4 4L19 7"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="bg-white p-4 rounded-2xl border border-lime-200 shadow-soft hover-lift">
+      <p class="font-semibold text-slate-700 text-center sm:text-left">
+        Lulus Evaluasi
+      </p>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="grid grid-cols-1 sm:grid-cols-[56px_1fr] items-center gap-4">
+    <div class="flex justify-center">
+      <div class="w-14 h-14 bg-lime-500 rounded-full flex items-center justify-center shadow-soft">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white"
+          fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 8c-2.21 0-4 1.12-4 2.5S9.79 13 12 13s4 1.12 4 2.5S14.21 18 12 18m0-10V6m0 12v-2"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="bg-white p-4 rounded-2xl border border-lime-200 shadow-soft hover-lift">
+      <p class="font-semibold text-slate-700 text-center sm:text-left">
+        Dapatkan 90% Dari Keuntungan
+      </p>
+    </div>
+  </div>
+
+</div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section id="pricing" class="py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold">Ringkasan Harga</h2>
+      <p class="text-gray-500 mt-2">Pilih balance akun</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div class="pricing-card"><p>$1,000</p><p class="price">Rp160K</p></div>
+      <div class="pricing-card"><p>$2,000</p><p class="price">Rp320K</p></div>
+      <div class="pricing-card relative border-2 border-lime-500">
+        <span class="badge">Best Value</span>
+        <p>$3,000</p><p class="price">Rp480K</p>
+      </div>
+      <div class="pricing-card"><p>$5,000</p><p class="price">Rp700K</p></div>
+      <div class="pricing-card"><p>$10,000</p><p class="price">Rp1,2 Juta</p></div>
+      <div class="pricing-card"><p>$25,000</p><p class="price">Rp2 Juta</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DASHBOARD PREVIEW (IMPROVED) ================= -->
+<section class="py-20 px-6 bg-slate-50">
+  <div class="max-w-6xl mx-auto grid gap-14 md:grid-cols-2 items-center">
+
+    <!-- LEFT TEXT -->
+    <div>
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        Dashboard Trader
+      </h2>
+
+      <p class="text-gray-600 mb-6 max-w-md">
+        Pantau profit, equity, dan drawdown akun Anda secara real-time
+        melalui dashboard eksklusif Forex Academy.
+      </p>
+
+      <ul class="space-y-3 text-sm">
+        <li class="flex gap-2 items-center">✅ Monitoring akun real-time</li>
+        <li class="flex gap-2 items-center">✅ Drawdown control otomatis</li>
+        <li class="flex gap-2 items-center">✅ Profit transparan & aman</li>
+      </ul>
+    </div>
+
+    <!-- DASHBOARD CARD -->
+    <div class="bg-white rounded-3xl border border-gray-200 p-6 sm:p-8 shadow-soft glass">
+
+      <!-- HEADER -->
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="font-semibold text-lg">Account Overview</h3>
+        <span class="text-xs font-bold text-green-600 bg-green-100 px-3 py-1 rounded-full">
+          LIVE
+        </span>
+      </div>
+
+      <!-- STATS -->
+      <div class="grid grid-cols-2 gap-4 mb-6">
+
+        <div class="bg-slate-50 rounded-xl p-4">
+          <p class="text-xs text-gray-500 mb-1">Balance</p>
+          <p class="text-lg font-bold">$25,000</p>
+        </div>
+
+        <div class="bg-slate-50 rounded-xl p-4">
+          <p class="text-xs text-gray-500 mb-1">Equity</p>
+          <p class="text-lg font-bold text-green-600">$27,340</p>
+        </div>
+
+        <div class="bg-slate-50 rounded-xl p-4">
+          <p class="text-xs text-gray-500 mb-1">Profit</p>
+          <p class="text-lg font-bold text-green-600">+$2,340</p>
+        </div>
+
+        <div class="bg-slate-50 rounded-xl p-4">
+          <p class="text-xs text-gray-500 mb-1">Drawdown</p>
+          <p class="text-lg font-bold text-red-500">3.2%</p>
+        </div>
+
+      </div>
+
+      <!-- CHART PREVIEW -->
+      <div class="relative h-36 rounded-2xl bg-gradient-to-r from-lime-300/40 to-lime-500/40 flex items-center justify-center mb-6">
+        <span class="text-sm font-semibold text-gray-700">
+          Equity Growth Chart
+        </span>
+      </div>
+
+      <!-- CTA -->
+      <a href="register.html"
+   class="block w-full text-center bg-lime-500 hover:bg-lime-600 text-white font-bold py-3 rounded-full transition hover-lift shadow-soft">
+  Mulai Challenge 🚀
+</a>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= ATURAN CHALLENGE ================= -->
+<section id="aturanSection" class="py-16 px-6 bg-slate-50">
+  <div class="max-w-md mx-auto">
+
+    <div class="rules-card p-6 sm:p-8 text-center">
+      <h2 class="text-xl font-bold mb-2">
+        📋 Aturan Challenge
+      </h2>
+      <p class="text-sm text-gray-500">
+        Ketentuan akun evaluasi Forex Academy
+      </p>
+
+      <ul class="text-left text-sm mt-6">
+
+        <li class="flex justify-between items-center rules-item">
+          <span>📉 Drawdown Harian</span>
+          <span class="rules-value">6%</span>
+        </li>
+
+        <li class="flex justify-between items-center rules-item">
+          <span>📉 Drawdown Total</span>
+          <span class="rules-value">10%</span>
+        </li>
+
+        <li class="flex justify-between items-center rules-item">
+          <span>🎯 Target Profit</span>
+          <span class="rules-value">9%</span>
+        </li>
+
+        <li class="flex justify-between items-center rules-item">
+          <span>💰 Profit Split</span>
+          <span class="rules-value">90% / 10%</span>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+
+<footer class="text-center py-6 text-sm text-gray-500">
+  © 2026 Forex Academy
+</footer>
+
+<script>
+const btn = document.getElementById("menuBtn");
+const menu = document.getElementById("menuDropdown");
+
+btn.addEventListener("click", () => menu.classList.toggle("hidden"));
+document.addEventListener("click", e => {
+  if (!btn.contains(e.target) && !menu.contains(e.target)) {
+    menu.classList.add("hidden");
+  }
+});
+</script>
+
+<script type="module">
+  import { auth } from "./js/firebase.js";
+  import { onAuthStateChanged, signOut }
+    from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+  const loginBtn = document.getElementById("loginBtn");
+  const registerBtn = document.getElementById("registerBtn");
+  const dashboardBtn = document.getElementById("dashboardBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const userName = document.getElementById("userName");
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // USER SUDAH LOGIN
+      loginBtn?.classList.add("hidden");
+      registerBtn?.classList.add("hidden");
+
+      dashboardBtn?.classList.remove("hidden");
+      logoutBtn?.classList.remove("hidden");
+
+      if (userName) {
+        userName.innerText = user.displayName || user.email;
+      }
+    } else {
+      // USER BELUM LOGIN
+      loginBtn?.classList.remove("hidden");
+      registerBtn?.classList.remove("hidden");
+
+      dashboardBtn?.classList.add("hidden");
+      logoutBtn?.classList.add("hidden");
+    }
+  });
+
+  logoutBtn?.addEventListener("click", async () => {
+    await signOut(auth);
+    window.location.reload();
+  });
+</script>
+
+</body>
+</html>
