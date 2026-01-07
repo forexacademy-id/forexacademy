@@ -6,7 +6,7 @@ import { doc, getDoc } from
 
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
-    window.location.replace("index.html");
+    window.location.replace("login.html");
     return;
   }
 
@@ -32,4 +32,5 @@ onAuthStateChanged(auth, async (user) => {
     console.error("Auth protect error:", err);
   }
 });
+
 
