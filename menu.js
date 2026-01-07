@@ -1,6 +1,8 @@
-import { auth } from "./firebase.js";
+import { auth, db } from "./firebase.js";
 import { onAuthStateChanged, signOut }
 from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+import { doc, getDoc }
+from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -13,20 +15,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const avatar = document.getElementById("avatar");
 
   // =========================
-  // AUTH CHECK
+  // AUTH CHECK + USER DATA
   // =========================
-  onAuthStateChanged(auth, (user) => {
+  onAuthStateChanged(auth, async (user) => {
     if (!user) {
       window.location.replace("login.html");
       return;
     }
 
-    const nama = user.displayName || "User";
-    const email = user.email || "-";
+    try {
+      const snap = await getDoc(doc(db, "users", user.uid));
 
-    if (menuNama) menuNama.innerText = nama;
-    if (menuEmail) menuEmail.innerText = email;
-    if (avatar) avatar.innerText = nama.charAt(0).toUpperCase();
+      const nama = snap.exists()
+        ? snap.data().nama
+        : "User";
+
+      if (menuNama) menuNama.innerText = nama;
+      if (menuEmail) menuEmail.innerText = user.email;
+      if (avatar) avatar.innerText = nama.charAt(0).toUpperCase();
+
+    } catch (err) {
+      console.error("Load user error:", err);
+    }
   });
 
   // =========================
