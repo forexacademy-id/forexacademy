@@ -4,6 +4,7 @@ import { onAuthStateChanged } from
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    window.location.replace("dashboard/menu.html");
+    window.location.replace("menu.html");
   }
 });
+
