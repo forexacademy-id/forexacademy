@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const avatar = document.getElementById("avatar");
 
   // =========================
-  // AUTH CHECK (AMAN)
+  // AUTH CHECK
   // =========================
   onAuthStateChanged(auth, (user) => {
     if (!user) {
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const nama = user.displayName || "User";
-    const email = user.email || user.providerData?.[0]?.email || "-";
+    const email = user.email || "-";
 
     if (menuNama) menuNama.innerText = nama;
     if (menuEmail) menuEmail.innerText = email;
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // =========================
-  // MENU TOGGLE (SAFE)
+  // MENU TOGGLE
   // =========================
   if (menuBtn && menu) {
     menuBtn.addEventListener("click", (e) => {
@@ -56,4 +56,3 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
-
